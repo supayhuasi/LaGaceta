@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d89f14bfd004145a90ce490c13db3d5" Name="Diagram1">
+        <EntityTypeShape EntityType="AIModel.Table" Width="1.5" PointX="10.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_ErrorImage" Width="1.5" PointX="10.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_File" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_File_Names" Width="1.5" PointX="10.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_FileType" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Gral" Width="1.5" PointX="10.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Language" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Log" Width="1.5" PointX="12.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_LuceneDBIndexAddress" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Perfiles_Permissions" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Periods_Suplements" Width="1.5" PointX="8" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_ProcessedFiles" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Schedule" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Schedule_LuceneDBIndexAddress" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_StopWord" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Suplements" Width="1.5" PointX="5.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_User" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_User_Perfil" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Perfiles" Width="1.5" PointX="2.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_Permissions" Width="1.5" PointX="12.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIModel.Table_TempReport" Width="1.5" PointX="4.75" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="AIModel.FK1D10F38D1E256C5C" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_Schedule_Table_FileType" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK7F882028101B9110" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK7F8820281E256C5C" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK7F88202863930AE1" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_StopWord_Table_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FKF58FFBDA7607634" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FKF58FFBDB56A5180" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FKF58FFBDFAD7F005" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_ProcessedFiles_LuceneDBIndexAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK76A8BC9A85DD2DD4" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FKCDB7295985DD2DD4" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_Period_Suplements_Table_Suplements" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK1DF21EEC60A2CAC" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_Schedule_Table_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK7F8820285625891A" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK7F8820287A98EA66" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK7F882028BBBC936B" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FKCDB7295922924FFE" ManuallyRouted="false" />
+        <AssociationConnector Association="AIModel.FK_Table_User_Perfil_Table_User_Perfil" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

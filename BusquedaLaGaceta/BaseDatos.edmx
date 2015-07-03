@@ -1,0 +1,1471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="230" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'AI.dbo.Table_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Table_1">
+          <Property Name="d" Type="int" />
+          <Property Name="h" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Table_ErrorImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Path" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Table_File">
+          <Key>
+            <PropertyRef Name="ID_File" />
+          </Key>
+          <Property Name="ID_File" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="File_Name" Type="varchar" MaxLength="255" />
+          <Property Name="File_Location" Type="varchar" MaxLength="255" />
+          <Property Name="ID_FileType" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_File_Names">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Directory" Type="nchar" MaxLength="100" />
+          <Property Name="File_Name" Type="nchar" MaxLength="50" />
+          <Property Name="File_Rename" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table_FileType">
+          <Key>
+            <PropertyRef Name="ID_FileType" />
+          </Key>
+          <Property Name="ID_FileType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileType_Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="FileType_Extension" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Gral">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nro_tabla" Type="bigint" />
+          <Property Name="nro_item" Type="bigint" />
+          <Property Name="descripcion" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Table_Language">
+          <Key>
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Language" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="bigint" />
+          <Property Name="periodicos" Type="varchar" MaxLength="50" />
+          <Property Name="operacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_hora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_LuceneDBIndexAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Roll_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Date_From" Type="date" />
+          <Property Name="Date_To" Type="date" />
+          <Property Name="DB_Path" Type="varchar" MaxLength="255" />
+          <Property Name="Folder_Path" Type="varchar" MaxLength="255" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Finalized" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AI.dbo.Table_Perfiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_Perfiles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" />
+          <Property Name="description" Type="nchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Table_Perfiles_Permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Perfiles" Type="bigint" Nullable="false" />
+          <Property Name="id_Permissions" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Periods_Suplements">
+          <Key>
+            <PropertyRef Name="Id_Periods" />
+          </Key>
+          <Property Name="Id_Periods" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Suplements" Type="int" Nullable="false" />
+          <Property Name="Date_From" Type="date" Nullable="false" />
+          <Property Name="Date_To" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AI.dbo.Table_Permissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_Permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="nchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Table_ProcessedFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="File_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Date_NewsPaper" Type="date" />
+          <Property Name="Page_Number" Type="int" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Year" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="Number_NewsPaper" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="Id_LuceneDBIndexAddress" Type="bigint" Nullable="false" />
+          <Property Name="Finalized" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_Schedule">
+          <Key>
+            <PropertyRef Name="ID_Schedule" />
+          </Key>
+          <Property Name="ID_Schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Schedule_Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Schedule_RootDirectory" Type="varchar(max)" Nullable="false" />
+          <Property Name="Schedule_Type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Schedule_Date" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Schedule_Time" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Schedule_Day" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Schedule_Interval" Type="int" Nullable="false" />
+          <Property Name="Schedule_Frequency" Type="int" Nullable="false" />
+          <Property Name="ID_FileType" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Schedule_LuceneDBIndexAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Schedule" Type="int" Nullable="false" />
+          <Property Name="ID_LuceneDBIndexAddress" Type="bigint" Nullable="false" />
+          <Property Name="Finalized" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_StopWord">
+          <Key>
+            <PropertyRef Name="ID_StopWord" />
+          </Key>
+          <Property Name="ID_StopWord" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StopWord_Word" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Language" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Suplements">
+          <Key>
+            <PropertyRef Name="Id_Suplements" />
+          </Key>
+          <Property Name="Id_Suplements" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Suplemnt" Type="text" />
+          <Property Name="Descript_Suplement" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AI.dbo.Table_TempReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_TempReport">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="directory" Type="varchar" MaxLength="200" />
+          <Property Name="numberFile" Type="int" />
+          <Property Name="numberRename" Type="int" />
+          <Property Name="roll" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="User_Password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_User_Perfil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_user" Type="bigint" Nullable="false" />
+          <Property Name="id_perfil" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ProcessedFiles_LuceneDBIndexAddress">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_ProcessedFiles" Type="Self.Table_ProcessedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_ProcessedFiles">
+              <PropertyRef Name="Id_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Period_Suplements_Table_Suplements">
+          <End Role="Table_Suplements" Type="Self.Table_Suplements" Multiplicity="1" />
+          <End Role="Table_Periods_Suplements" Type="Self.Table_Periods_Suplements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Principal>
+            <Dependent Role="Table_Periods_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule">
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Schedule">
+              <PropertyRef Name="ID_Schedule" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_Schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_Table_FileType">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_Table_User">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_StopWord_Table_Language">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_User_Perfil_Table_User_Perfil">
+          <End Role="Table_User_Perfil" Type="Self.Table_User_Perfil" Multiplicity="1" />
+          <End Role="Table_User_Perfil1" Type="Self.Table_User_Perfil" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User_Perfil">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Table_User_Perfil1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1D10F38D1E256C5C">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="0..1" />
+          <End Role="Table_File" Type="Self.Table_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_File">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1DF21EEC60A2CAC">
+          <End Role="Table_Suplements" Type="Self.Table_Suplements" Multiplicity="1" />
+          <End Role="Table_Periods_Suplements" Type="Self.Table_Periods_Suplements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Principal>
+            <Dependent Role="Table_Periods_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK76A8BC9A85DD2DD4">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_ProcessedFiles" Type="Self.Table_ProcessedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_ProcessedFiles">
+              <PropertyRef Name="Id_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F882028101B9110">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F8820281E256C5C">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F8820285625891A">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F88202863930AE1">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F8820287A98EA66">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F882028BBBC936B">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCDB7295922924FFE">
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Schedule">
+              <PropertyRef Name="ID_Schedule" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_Schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCDB7295985DD2DD4">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKF58FFBDA7607634">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKF58FFBDB56A5180">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKF58FFBDFAD7F005">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AIModelStoreContainer">
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_ErrorImage" EntityType="Self.Table_ErrorImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_File" EntityType="Self.Table_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_File_Names" EntityType="Self.Table_File_Names" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_FileType" EntityType="Self.Table_FileType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Gral" EntityType="Self.Table_Gral" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Language" EntityType="Self.Table_Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Log" EntityType="Self.Table_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_LuceneDBIndexAddress" EntityType="Self.Table_LuceneDBIndexAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Perfiles_Permissions" EntityType="Self.Table_Perfiles_Permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Periods_Suplements" EntityType="Self.Table_Periods_Suplements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_ProcessedFiles" EntityType="Self.Table_ProcessedFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Schedule" EntityType="Self.Table_Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Schedule_LuceneDBIndexAddress" EntityType="Self.Table_Schedule_LuceneDBIndexAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_StopWord" EntityType="Self.Table_StopWord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Suplements" EntityType="Self.Table_Suplements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_User" EntityType="Self.Table_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_User_Perfil" EntityType="Self.Table_User_Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Perfiles" EntityType="Self.Table_Perfiles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_Perfiles].[id] AS [id], 
+    [Table_Perfiles].[name] AS [name], 
+    [Table_Perfiles].[description] AS [description]
+    FROM [dbo].[Table_Perfiles] AS [Table_Perfiles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Table_Permissions" EntityType="Self.Table_Permissions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_Permissions].[id] AS [id], 
+    [Table_Permissions].[name] AS [name], 
+    [Table_Permissions].[description] AS [description]
+    FROM [dbo].[Table_Permissions] AS [Table_Permissions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Table_TempReport" EntityType="Self.Table_TempReport" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_TempReport].[id] AS [id], 
+    [Table_TempReport].[directory] AS [directory], 
+    [Table_TempReport].[numberFile] AS [numberFile], 
+    [Table_TempReport].[numberRename] AS [numberRename], 
+    [Table_TempReport].[roll] AS [roll]
+    FROM [dbo].[Table_TempReport] AS [Table_TempReport]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ProcessedFiles_LuceneDBIndexAddress" Association="Self.FK_ProcessedFiles_LuceneDBIndexAddress">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_ProcessedFiles" EntitySet="Table_ProcessedFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Period_Suplements_Table_Suplements" Association="Self.FK_Table_Period_Suplements_Table_Suplements">
+            <End Role="Table_Suplements" EntitySet="Table_Suplements" />
+            <End Role="Table_Periods_Suplements" EntitySet="Table_Periods_Suplements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress" Association="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule" Association="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule">
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_Table_FileType" Association="Self.FK_Table_Schedule_Table_FileType">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_Table_User" Association="Self.FK_Table_Schedule_Table_User">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_StopWord_Table_Language" Association="Self.FK_Table_StopWord_Table_Language">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_User_Perfil_Table_User_Perfil" Association="Self.FK_Table_User_Perfil_Table_User_Perfil">
+            <End Role="Table_User_Perfil" EntitySet="Table_User_Perfil" />
+            <End Role="Table_User_Perfil1" EntitySet="Table_User_Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK1D10F38D1E256C5C" Association="Self.FK1D10F38D1E256C5C">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_File" EntitySet="Table_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK1DF21EEC60A2CAC" Association="Self.FK1DF21EEC60A2CAC">
+            <End Role="Table_Suplements" EntitySet="Table_Suplements" />
+            <End Role="Table_Periods_Suplements" EntitySet="Table_Periods_Suplements" />
+          </AssociationSet>
+          <AssociationSet Name="FK76A8BC9A85DD2DD4" Association="Self.FK76A8BC9A85DD2DD4">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_ProcessedFiles" EntitySet="Table_ProcessedFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F882028101B9110" Association="Self.FK7F882028101B9110">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F8820281E256C5C" Association="Self.FK7F8820281E256C5C">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F8820285625891A" Association="Self.FK7F8820285625891A">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F88202863930AE1" Association="Self.FK7F88202863930AE1">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F8820287A98EA66" Association="Self.FK7F8820287A98EA66">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F882028BBBC936B" Association="Self.FK7F882028BBBC936B">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FKCDB7295922924FFE" Association="Self.FKCDB7295922924FFE">
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FKCDB7295985DD2DD4" Association="Self.FKCDB7295985DD2DD4">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FKF58FFBDA7607634" Association="Self.FKF58FFBDA7607634">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FKF58FFBDB56A5180" Association="Self.FKF58FFBDB56A5180">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FKF58FFBDFAD7F005" Association="Self.FKF58FFBDFAD7F005">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="230" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table_ErrorImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table_File">
+          <Key>
+            <PropertyRef Name="ID_File" />
+          </Key>
+          <Property Name="ID_File" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="File_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="File_Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ID_FileType" Type="Int32" />
+          <NavigationProperty Name="Table_FileType" Relationship="Self.FK1D10F38D1E256C5C" FromRole="Table_File" ToRole="Table_FileType" />
+        </EntityType>
+        <EntityType Name="Table_File_Names">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Directory" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="File_Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="File_Rename" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_FileType">
+          <Key>
+            <PropertyRef Name="ID_FileType" />
+          </Key>
+          <Property Name="ID_FileType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileType_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileType_Extension" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Table_File" Relationship="Self.FK1D10F38D1E256C5C" FromRole="Table_FileType" ToRole="Table_File" />
+          <NavigationProperty Name="Table_Schedule" Relationship="Self.FK_Table_Schedule_Table_FileType" FromRole="Table_FileType" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule1" Relationship="Self.FK7F882028101B9110" FromRole="Table_FileType" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule2" Relationship="Self.FK7F8820281E256C5C" FromRole="Table_FileType" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule3" Relationship="Self.FK7F88202863930AE1" FromRole="Table_FileType" ToRole="Table_Schedule" />
+        </EntityType>
+        <EntityType Name="Table_Gral">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nro_tabla" Type="Int64" />
+          <Property Name="nro_item" Type="Int64" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table_Language">
+          <Key>
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Language" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Table_StopWord" Relationship="Self.FK_Table_StopWord_Table_Language" FromRole="Table_Language" ToRole="Table_StopWord" />
+          <NavigationProperty Name="Table_StopWord1" Relationship="Self.FKF58FFBDA7607634" FromRole="Table_Language" ToRole="Table_StopWord" />
+          <NavigationProperty Name="Table_StopWord2" Relationship="Self.FKF58FFBDB56A5180" FromRole="Table_Language" ToRole="Table_StopWord" />
+          <NavigationProperty Name="Table_StopWord3" Relationship="Self.FKF58FFBDFAD7F005" FromRole="Table_Language" ToRole="Table_StopWord" />
+        </EntityType>
+        <EntityType Name="Table_Log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="periodicos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="operacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_hora" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Table_LuceneDBIndexAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Roll_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_From" Type="DateTime" Precision="0" />
+          <Property Name="Date_To" Type="DateTime" Precision="0" />
+          <Property Name="DB_Path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Folder_Path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Finalized" Type="Int32" />
+          <NavigationProperty Name="Table_ProcessedFiles" Relationship="Self.FK_ProcessedFiles_LuceneDBIndexAddress" FromRole="Table_LuceneDBIndexAddress" ToRole="Table_ProcessedFiles" />
+          <NavigationProperty Name="Table_Schedule_LuceneDBIndexAddress" Relationship="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress" FromRole="Table_LuceneDBIndexAddress" ToRole="Table_Schedule_LuceneDBIndexAddress" />
+          <NavigationProperty Name="Table_ProcessedFiles1" Relationship="Self.FK76A8BC9A85DD2DD4" FromRole="Table_LuceneDBIndexAddress" ToRole="Table_ProcessedFiles" />
+          <NavigationProperty Name="Table_Schedule_LuceneDBIndexAddress1" Relationship="Self.FKCDB7295985DD2DD4" FromRole="Table_LuceneDBIndexAddress" ToRole="Table_Schedule_LuceneDBIndexAddress" />
+        </EntityType>
+        <EntityType Name="Table_Perfiles_Permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Perfiles" Type="Int64" Nullable="false" />
+          <Property Name="id_Permissions" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Periods_Suplements">
+          <Key>
+            <PropertyRef Name="Id_Periods" />
+          </Key>
+          <Property Name="Id_Periods" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Suplements" Type="Int32" Nullable="false" />
+          <Property Name="Date_From" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_To" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Table_Suplements" Relationship="Self.FK_Table_Period_Suplements_Table_Suplements" FromRole="Table_Periods_Suplements" ToRole="Table_Suplements" />
+          <NavigationProperty Name="Table_Suplements1" Relationship="Self.FK1DF21EEC60A2CAC" FromRole="Table_Periods_Suplements" ToRole="Table_Suplements" />
+        </EntityType>
+        <EntityType Name="Table_ProcessedFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="File_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Date_NewsPaper" Type="DateTime" Precision="0" />
+          <Property Name="Page_Number" Type="Int32" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Year" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="Number_NewsPaper" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Id_LuceneDBIndexAddress" Type="Int64" Nullable="false" />
+          <Property Name="Finalized" Type="Int32" />
+          <NavigationProperty Name="Table_LuceneDBIndexAddress" Relationship="Self.FK_ProcessedFiles_LuceneDBIndexAddress" FromRole="Table_ProcessedFiles" ToRole="Table_LuceneDBIndexAddress" />
+          <NavigationProperty Name="Table_LuceneDBIndexAddress1" Relationship="Self.FK76A8BC9A85DD2DD4" FromRole="Table_ProcessedFiles" ToRole="Table_LuceneDBIndexAddress" />
+        </EntityType>
+        <EntityType Name="Table_Schedule">
+          <Key>
+            <PropertyRef Name="ID_Schedule" />
+          </Key>
+          <Property Name="ID_Schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Schedule_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Schedule_RootDirectory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Schedule_Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Schedule_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Schedule_Time" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Schedule_Day" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Schedule_Interval" Type="Int32" Nullable="false" />
+          <Property Name="Schedule_Frequency" Type="Int32" Nullable="false" />
+          <Property Name="ID_FileType" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_FileType" Relationship="Self.FK_Table_Schedule_Table_FileType" FromRole="Table_Schedule" ToRole="Table_FileType" />
+          <NavigationProperty Name="Table_FileType1" Relationship="Self.FK7F882028101B9110" FromRole="Table_Schedule" ToRole="Table_FileType" />
+          <NavigationProperty Name="Table_FileType2" Relationship="Self.FK7F8820281E256C5C" FromRole="Table_Schedule" ToRole="Table_FileType" />
+          <NavigationProperty Name="Table_FileType3" Relationship="Self.FK7F88202863930AE1" FromRole="Table_Schedule" ToRole="Table_FileType" />
+          <NavigationProperty Name="Table_Schedule_LuceneDBIndexAddress" Relationship="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule" FromRole="Table_Schedule" ToRole="Table_Schedule_LuceneDBIndexAddress" />
+          <NavigationProperty Name="Table_User" Relationship="Self.FK_Table_Schedule_Table_User" FromRole="Table_Schedule" ToRole="Table_User" />
+          <NavigationProperty Name="Table_User1" Relationship="Self.FK7F8820285625891A" FromRole="Table_Schedule" ToRole="Table_User" />
+          <NavigationProperty Name="Table_User2" Relationship="Self.FK7F8820287A98EA66" FromRole="Table_Schedule" ToRole="Table_User" />
+          <NavigationProperty Name="Table_User3" Relationship="Self.FK7F882028BBBC936B" FromRole="Table_Schedule" ToRole="Table_User" />
+          <NavigationProperty Name="Table_Schedule_LuceneDBIndexAddress1" Relationship="Self.FKCDB7295922924FFE" FromRole="Table_Schedule" ToRole="Table_Schedule_LuceneDBIndexAddress" />
+        </EntityType>
+        <EntityType Name="Table_Schedule_LuceneDBIndexAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Schedule" Type="Int32" Nullable="false" />
+          <Property Name="ID_LuceneDBIndexAddress" Type="Int64" Nullable="false" />
+          <Property Name="Finalized" Type="Int32" />
+          <NavigationProperty Name="Table_LuceneDBIndexAddress" Relationship="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress" FromRole="Table_Schedule_LuceneDBIndexAddress" ToRole="Table_LuceneDBIndexAddress" />
+          <NavigationProperty Name="Table_LuceneDBIndexAddress1" Relationship="Self.FKCDB7295985DD2DD4" FromRole="Table_Schedule_LuceneDBIndexAddress" ToRole="Table_LuceneDBIndexAddress" />
+          <NavigationProperty Name="Table_Schedule" Relationship="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule" FromRole="Table_Schedule_LuceneDBIndexAddress" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule1" Relationship="Self.FKCDB7295922924FFE" FromRole="Table_Schedule_LuceneDBIndexAddress" ToRole="Table_Schedule" />
+        </EntityType>
+        <EntityType Name="Table_StopWord">
+          <Key>
+            <PropertyRef Name="ID_StopWord" />
+          </Key>
+          <Property Name="ID_StopWord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StopWord_Word" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Language" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Language" Relationship="Self.FK_Table_StopWord_Table_Language" FromRole="Table_StopWord" ToRole="Table_Language" />
+          <NavigationProperty Name="Table_Language1" Relationship="Self.FKF58FFBDA7607634" FromRole="Table_StopWord" ToRole="Table_Language" />
+          <NavigationProperty Name="Table_Language2" Relationship="Self.FKF58FFBDB56A5180" FromRole="Table_StopWord" ToRole="Table_Language" />
+          <NavigationProperty Name="Table_Language3" Relationship="Self.FKF58FFBDFAD7F005" FromRole="Table_StopWord" ToRole="Table_Language" />
+        </EntityType>
+        <EntityType Name="Table_Suplements">
+          <Key>
+            <PropertyRef Name="Id_Suplements" />
+          </Key>
+          <Property Name="Id_Suplements" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Suplemnt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descript_Suplement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Table_Periods_Suplements" Relationship="Self.FK_Table_Period_Suplements_Table_Suplements" FromRole="Table_Suplements" ToRole="Table_Periods_Suplements" />
+          <NavigationProperty Name="Table_Periods_Suplements1" Relationship="Self.FK1DF21EEC60A2CAC" FromRole="Table_Suplements" ToRole="Table_Periods_Suplements" />
+        </EntityType>
+        <EntityType Name="Table_User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Table_Schedule" Relationship="Self.FK_Table_Schedule_Table_User" FromRole="Table_User" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule1" Relationship="Self.FK7F8820285625891A" FromRole="Table_User" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule2" Relationship="Self.FK7F8820287A98EA66" FromRole="Table_User" ToRole="Table_Schedule" />
+          <NavigationProperty Name="Table_Schedule3" Relationship="Self.FK7F882028BBBC936B" FromRole="Table_User" ToRole="Table_Schedule" />
+        </EntityType>
+        <EntityType Name="Table_User_Perfil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_user" Type="Int64" Nullable="false" />
+          <Property Name="id_perfil" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Table_User_Perfil1" Relationship="Self.FK_Table_User_Perfil_Table_User_Perfil" FromRole="Table_User_Perfil" ToRole="Table_User_Perfil1" />
+          <NavigationProperty Name="Table_User_Perfil2" Relationship="Self.FK_Table_User_Perfil_Table_User_Perfil" FromRole="Table_User_Perfil1" ToRole="Table_User_Perfil" />
+        </EntityType>
+        <EntityType Name="Table_Perfiles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Permissions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_TempReport">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="directory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="numberFile" Type="Int32" />
+          <Property Name="numberRename" Type="Int32" />
+          <Property Name="roll" Type="Int32" />
+        </EntityType>
+        <Association Name="FK1D10F38D1E256C5C">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="0..1" />
+          <End Role="Table_File" Type="Self.Table_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_File">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_Table_FileType">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F882028101B9110">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F8820281E256C5C">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F88202863930AE1">
+          <End Role="Table_FileType" Type="Self.Table_FileType" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_FileType">
+              <PropertyRef Name="ID_FileType" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_FileType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_StopWord_Table_Language">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKF58FFBDA7607634">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKF58FFBDB56A5180">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKF58FFBDFAD7F005">
+          <End Role="Table_Language" Type="Self.Table_Language" Multiplicity="1" />
+          <End Role="Table_StopWord" Type="Self.Table_StopWord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Language">
+              <PropertyRef Name="ID_Language" />
+            </Principal>
+            <Dependent Role="Table_StopWord">
+              <PropertyRef Name="ID_Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessedFiles_LuceneDBIndexAddress">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_ProcessedFiles" Type="Self.Table_ProcessedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_ProcessedFiles">
+              <PropertyRef Name="Id_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK76A8BC9A85DD2DD4">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_ProcessedFiles" Type="Self.Table_ProcessedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_ProcessedFiles">
+              <PropertyRef Name="Id_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCDB7295985DD2DD4">
+          <End Role="Table_LuceneDBIndexAddress" Type="Self.Table_LuceneDBIndexAddress" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_LuceneDBIndexAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_LuceneDBIndexAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Period_Suplements_Table_Suplements">
+          <End Role="Table_Suplements" Type="Self.Table_Suplements" Multiplicity="1" />
+          <End Role="Table_Periods_Suplements" Type="Self.Table_Periods_Suplements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Principal>
+            <Dependent Role="Table_Periods_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1DF21EEC60A2CAC">
+          <End Role="Table_Suplements" Type="Self.Table_Suplements" Multiplicity="1" />
+          <End Role="Table_Periods_Suplements" Type="Self.Table_Periods_Suplements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Principal>
+            <Dependent Role="Table_Periods_Suplements">
+              <PropertyRef Name="Id_Suplements" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule">
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Schedule">
+              <PropertyRef Name="ID_Schedule" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_Schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Schedule_Table_User">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F8820285625891A">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F8820287A98EA66">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7F882028BBBC936B">
+          <End Role="Table_User" Type="Self.Table_User" Multiplicity="1" />
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Table_Schedule">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCDB7295922924FFE">
+          <End Role="Table_Schedule" Type="Self.Table_Schedule" Multiplicity="1" />
+          <End Role="Table_Schedule_LuceneDBIndexAddress" Type="Self.Table_Schedule_LuceneDBIndexAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Schedule">
+              <PropertyRef Name="ID_Schedule" />
+            </Principal>
+            <Dependent Role="Table_Schedule_LuceneDBIndexAddress">
+              <PropertyRef Name="ID_Schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_User_Perfil_Table_User_Perfil">
+          <End Role="Table_User_Perfil" Type="Self.Table_User_Perfil" Multiplicity="1" />
+          <End Role="Table_User_Perfil1" Type="Self.Table_User_Perfil" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_User_Perfil">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Table_User_Perfil1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <EntitySet Name="Table_ErrorImage" EntityType="Self.Table_ErrorImage" />
+          <EntitySet Name="Table_File" EntityType="Self.Table_File" />
+          <EntitySet Name="Table_File_Names" EntityType="Self.Table_File_Names" />
+          <EntitySet Name="Table_FileType" EntityType="Self.Table_FileType" />
+          <EntitySet Name="Table_Gral" EntityType="Self.Table_Gral" />
+          <EntitySet Name="Table_Language" EntityType="Self.Table_Language" />
+          <EntitySet Name="Table_Log" EntityType="Self.Table_Log" />
+          <EntitySet Name="Table_LuceneDBIndexAddress" EntityType="Self.Table_LuceneDBIndexAddress" />
+          <EntitySet Name="Table_Perfiles_Permissions" EntityType="Self.Table_Perfiles_Permissions" />
+          <EntitySet Name="Table_Periods_Suplements" EntityType="Self.Table_Periods_Suplements" />
+          <EntitySet Name="Table_ProcessedFiles" EntityType="Self.Table_ProcessedFiles" />
+          <EntitySet Name="Table_Schedule" EntityType="Self.Table_Schedule" />
+          <EntitySet Name="Table_Schedule_LuceneDBIndexAddress" EntityType="Self.Table_Schedule_LuceneDBIndexAddress" />
+          <EntitySet Name="Table_StopWord" EntityType="Self.Table_StopWord" />
+          <EntitySet Name="Table_Suplements" EntityType="Self.Table_Suplements" />
+          <EntitySet Name="Table_User" EntityType="Self.Table_User" />
+          <EntitySet Name="Table_User_Perfil" EntityType="Self.Table_User_Perfil" />
+          <EntitySet Name="Table_Perfiles" EntityType="Self.Table_Perfiles" />
+          <EntitySet Name="Table_Permissions" EntityType="Self.Table_Permissions" />
+          <EntitySet Name="Table_TempReport" EntityType="Self.Table_TempReport" />
+          <AssociationSet Name="FK1D10F38D1E256C5C" Association="Self.FK1D10F38D1E256C5C">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_File" EntitySet="Table_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_Table_FileType" Association="Self.FK_Table_Schedule_Table_FileType">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F882028101B9110" Association="Self.FK7F882028101B9110">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F8820281E256C5C" Association="Self.FK7F8820281E256C5C">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F88202863930AE1" Association="Self.FK7F88202863930AE1">
+            <End Role="Table_FileType" EntitySet="Table_FileType" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_StopWord_Table_Language" Association="Self.FK_Table_StopWord_Table_Language">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FKF58FFBDA7607634" Association="Self.FKF58FFBDA7607634">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FKF58FFBDB56A5180" Association="Self.FKF58FFBDB56A5180">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FKF58FFBDFAD7F005" Association="Self.FKF58FFBDFAD7F005">
+            <End Role="Table_Language" EntitySet="Table_Language" />
+            <End Role="Table_StopWord" EntitySet="Table_StopWord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessedFiles_LuceneDBIndexAddress" Association="Self.FK_ProcessedFiles_LuceneDBIndexAddress">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_ProcessedFiles" EntitySet="Table_ProcessedFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress" Association="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_LuceneDBIndexAddress">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK76A8BC9A85DD2DD4" Association="Self.FK76A8BC9A85DD2DD4">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_ProcessedFiles" EntitySet="Table_ProcessedFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKCDB7295985DD2DD4" Association="Self.FKCDB7295985DD2DD4">
+            <End Role="Table_LuceneDBIndexAddress" EntitySet="Table_LuceneDBIndexAddress" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Period_Suplements_Table_Suplements" Association="Self.FK_Table_Period_Suplements_Table_Suplements">
+            <End Role="Table_Suplements" EntitySet="Table_Suplements" />
+            <End Role="Table_Periods_Suplements" EntitySet="Table_Periods_Suplements" />
+          </AssociationSet>
+          <AssociationSet Name="FK1DF21EEC60A2CAC" Association="Self.FK1DF21EEC60A2CAC">
+            <End Role="Table_Suplements" EntitySet="Table_Suplements" />
+            <End Role="Table_Periods_Suplements" EntitySet="Table_Periods_Suplements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule" Association="Self.FK_Table_Schedule_LuceneDBIndexAddress_Table_Schedule">
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Schedule_Table_User" Association="Self.FK_Table_Schedule_Table_User">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F8820285625891A" Association="Self.FK7F8820285625891A">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F8820287A98EA66" Association="Self.FK7F8820287A98EA66">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK7F882028BBBC936B" Association="Self.FK7F882028BBBC936B">
+            <End Role="Table_User" EntitySet="Table_User" />
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FKCDB7295922924FFE" Association="Self.FKCDB7295922924FFE">
+            <End Role="Table_Schedule" EntitySet="Table_Schedule" />
+            <End Role="Table_Schedule_LuceneDBIndexAddress" EntitySet="Table_Schedule_LuceneDBIndexAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_User_Perfil_Table_User_Perfil" Association="Self.FK_Table_User_Perfil_Table_User_Perfil">
+            <End Role="Table_User_Perfil" EntitySet="Table_User_Perfil" />
+            <End Role="Table_User_Perfil1" EntitySet="Table_User_Perfil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AIModelStoreContainer" CdmEntityContainer="AIEntities">
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="AIModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_ErrorImage">
+            <EntityTypeMapping TypeName="AIModel.Table_ErrorImage">
+              <MappingFragment StoreEntitySet="Table_ErrorImage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_File">
+            <EntityTypeMapping TypeName="AIModel.Table_File">
+              <MappingFragment StoreEntitySet="Table_File">
+                <ScalarProperty Name="ID_File" ColumnName="ID_File" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="File_Location" ColumnName="File_Location" />
+                <ScalarProperty Name="ID_FileType" ColumnName="ID_FileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_File_Names">
+            <EntityTypeMapping TypeName="AIModel.Table_File_Names">
+              <MappingFragment StoreEntitySet="Table_File_Names">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Directory" ColumnName="Directory" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="File_Rename" ColumnName="File_Rename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_FileType">
+            <EntityTypeMapping TypeName="AIModel.Table_FileType">
+              <MappingFragment StoreEntitySet="Table_FileType">
+                <ScalarProperty Name="ID_FileType" ColumnName="ID_FileType" />
+                <ScalarProperty Name="FileType_Name" ColumnName="FileType_Name" />
+                <ScalarProperty Name="FileType_Extension" ColumnName="FileType_Extension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Gral">
+            <EntityTypeMapping TypeName="AIModel.Table_Gral">
+              <MappingFragment StoreEntitySet="Table_Gral">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nro_tabla" ColumnName="nro_tabla" />
+                <ScalarProperty Name="nro_item" ColumnName="nro_item" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Language">
+            <EntityTypeMapping TypeName="AIModel.Table_Language">
+              <MappingFragment StoreEntitySet="Table_Language">
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Language_Name" ColumnName="Language_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Log">
+            <EntityTypeMapping TypeName="AIModel.Table_Log">
+              <MappingFragment StoreEntitySet="Table_Log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="periodicos" ColumnName="periodicos" />
+                <ScalarProperty Name="operacion" ColumnName="operacion" />
+                <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_LuceneDBIndexAddress">
+            <EntityTypeMapping TypeName="AIModel.Table_LuceneDBIndexAddress">
+              <MappingFragment StoreEntitySet="Table_LuceneDBIndexAddress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Roll_Number" ColumnName="Roll_Number" />
+                <ScalarProperty Name="Date_From" ColumnName="Date_From" />
+                <ScalarProperty Name="Date_To" ColumnName="Date_To" />
+                <ScalarProperty Name="DB_Path" ColumnName="DB_Path" />
+                <ScalarProperty Name="Folder_Path" ColumnName="Folder_Path" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Finalized" ColumnName="Finalized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Perfiles_Permissions">
+            <EntityTypeMapping TypeName="AIModel.Table_Perfiles_Permissions">
+              <MappingFragment StoreEntitySet="Table_Perfiles_Permissions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Perfiles" ColumnName="id_Perfiles" />
+                <ScalarProperty Name="id_Permissions" ColumnName="id_Permissions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Periods_Suplements">
+            <EntityTypeMapping TypeName="AIModel.Table_Periods_Suplements">
+              <MappingFragment StoreEntitySet="Table_Periods_Suplements">
+                <ScalarProperty Name="Id_Periods" ColumnName="Id_Periods" />
+                <ScalarProperty Name="Id_Suplements" ColumnName="Id_Suplements" />
+                <ScalarProperty Name="Date_From" ColumnName="Date_From" />
+                <ScalarProperty Name="Date_To" ColumnName="Date_To" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_ProcessedFiles">
+            <EntityTypeMapping TypeName="AIModel.Table_ProcessedFiles">
+              <MappingFragment StoreEntitySet="Table_ProcessedFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="Date_NewsPaper" ColumnName="Date_NewsPaper" />
+                <ScalarProperty Name="Page_Number" ColumnName="Page_Number" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Number_NewsPaper" ColumnName="Number_NewsPaper" />
+                <ScalarProperty Name="Id_LuceneDBIndexAddress" ColumnName="Id_LuceneDBIndexAddress" />
+                <ScalarProperty Name="Finalized" ColumnName="Finalized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Schedule">
+            <EntityTypeMapping TypeName="AIModel.Table_Schedule">
+              <MappingFragment StoreEntitySet="Table_Schedule">
+                <ScalarProperty Name="ID_Schedule" ColumnName="ID_Schedule" />
+                <ScalarProperty Name="Schedule_Name" ColumnName="Schedule_Name" />
+                <ScalarProperty Name="Schedule_RootDirectory" ColumnName="Schedule_RootDirectory" />
+                <ScalarProperty Name="Schedule_Type" ColumnName="Schedule_Type" />
+                <ScalarProperty Name="Schedule_Date" ColumnName="Schedule_Date" />
+                <ScalarProperty Name="Schedule_Time" ColumnName="Schedule_Time" />
+                <ScalarProperty Name="Schedule_Day" ColumnName="Schedule_Day" />
+                <ScalarProperty Name="Schedule_Interval" ColumnName="Schedule_Interval" />
+                <ScalarProperty Name="Schedule_Frequency" ColumnName="Schedule_Frequency" />
+                <ScalarProperty Name="ID_FileType" ColumnName="ID_FileType" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Schedule_LuceneDBIndexAddress">
+            <EntityTypeMapping TypeName="AIModel.Table_Schedule_LuceneDBIndexAddress">
+              <MappingFragment StoreEntitySet="Table_Schedule_LuceneDBIndexAddress">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Schedule" ColumnName="ID_Schedule" />
+                <ScalarProperty Name="ID_LuceneDBIndexAddress" ColumnName="ID_LuceneDBIndexAddress" />
+                <ScalarProperty Name="Finalized" ColumnName="Finalized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_StopWord">
+            <EntityTypeMapping TypeName="AIModel.Table_StopWord">
+              <MappingFragment StoreEntitySet="Table_StopWord">
+                <ScalarProperty Name="ID_StopWord" ColumnName="ID_StopWord" />
+                <ScalarProperty Name="StopWord_Word" ColumnName="StopWord_Word" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Suplements">
+            <EntityTypeMapping TypeName="AIModel.Table_Suplements">
+              <MappingFragment StoreEntitySet="Table_Suplements">
+                <ScalarProperty Name="Id_Suplements" ColumnName="Id_Suplements" />
+                <ScalarProperty Name="Name_Suplemnt" ColumnName="Name_Suplemnt" />
+                <ScalarProperty Name="Descript_Suplement" ColumnName="Descript_Suplement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_User">
+            <EntityTypeMapping TypeName="AIModel.Table_User">
+              <MappingFragment StoreEntitySet="Table_User">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_User_Perfil">
+            <EntityTypeMapping TypeName="AIModel.Table_User_Perfil">
+              <MappingFragment StoreEntitySet="Table_User_Perfil">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Perfiles">
+            <EntityTypeMapping TypeName="AIModel.Table_Perfiles">
+              <MappingFragment StoreEntitySet="Table_Perfiles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Permissions">
+            <EntityTypeMapping TypeName="AIModel.Table_Permissions">
+              <MappingFragment StoreEntitySet="Table_Permissions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_TempReport">
+            <EntityTypeMapping TypeName="AIModel.Table_TempReport">
+              <MappingFragment StoreEntitySet="Table_TempReport">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="directory" ColumnName="directory" />
+                <ScalarProperty Name="numberFile" ColumnName="numberFile" />
+                <ScalarProperty Name="numberRename" ColumnName="numberRename" />
+                <ScalarProperty Name="roll" ColumnName="roll" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
