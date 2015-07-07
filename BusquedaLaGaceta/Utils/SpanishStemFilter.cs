@@ -4,55 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lucene.Net.Analysis;
+using SF.Snowball.Ext;
 
 namespace BusquedaLaGaceta.Utils
 {
-    class SpanishStemFilter
+    class SpanishStemFilter : TokenFilter
     {
         private SpanishStemmer stemmer;
-	private Token token = null;
+	    private Token token = null;
 
 	/**
 	 * Constructor
 	 * 
 	 * @param in el <code>TokenStream</code> que se desea procesar
 	 */
-	public SpanishStemFilter(TokenStream in) 
+    //public SpanishStemFilter()
+    //{	   
+    //    //base(tokenStream)
+    //    //;
+    //    stemmer = new SpanishStemmer();
+    //}
+		
+	public Token next() 
 	{
-		super(in);
-		stemmer = new SpanishStemmer();
-	}
-	
-	/** Returns the next input Token, after being stemmed */
-	@SuppressWarnings("deprecation")
-	public final Token next() throws IOException 
-	{
-		if ((token = input.next()) == null) 
-		{
-			return null;
-		}
-		else 
-		{
-			stemmer.setCurrent(token.termText());
-			stemmer.stem();
-			String s = stemmer.getCurrent();
-			if ( !s.equals( token.termText() ) ) 
+        //if ((token = input.next()) == null) 
+        //{
+        //    return null;
+        //}
+        //else 
+        //{
+			stemmer.SetCurrent(token.TermText());
+			stemmer.Stem();
+	        string s = stemmer.GetCurrent();
+			if ( !s.Equals(token.TermText())) 
 			{
-				return new Token(s, token.startOffset(), token.endOffset(), token.type());
+				return new Token(s, token.StartOffset(), token.EndOffset(), token.Type());
 			}
 			return token;
-		}
+	//	}
 	}
 	
 	/**
 	* Set a alternative/custom Stemmer for this filter.
 	*/
-	public void setStemmer(SpanishStemmer stemmer) 
-	{
-		if ( stemmer != null ) 
-		{
-			this.stemmer = stemmer;
-		}
-	}
+
+        public SpanishStemFilter(TokenStream input) : base(input)
+        {
+            stemmer = new SpanishStemmer();
+        }
     }
 }

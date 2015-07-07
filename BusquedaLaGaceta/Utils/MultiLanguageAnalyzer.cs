@@ -10,16 +10,10 @@ using Lucene.Net.Analysis.Standard;
 
 namespace BusquedaLaGaceta.Utils
 {
-    class MultiLanguageAnalyzer
+    class MultiLanguageAnalyzer : Analyzer
     {
-        private Hashtable stopTable
-        {
-            get;
-            set
-            {
-                this.stopTable = new Hashtable();
-            }
-        } 
+        private Hashtable stopTable{get; set; }
+                            
 
         /**
 	 * Constructor. Genera una nueva intancia de <code>MultiLanguageAnalyzer</code>
@@ -29,9 +23,9 @@ namespace BusquedaLaGaceta.Utils
 	{
 		stopTable = StopFilter.MakeStopSet(stopWords);
 	}
-	
-	
-	public TokenStream tokenStream(string fieldName, TextReader reader)
+
+
+    public override TokenStream TokenStream(string fieldName, TextReader reader)
 	{
 		TokenStream result = new StandardTokenizer(reader);
 		result = new StandardFilter(result);
@@ -41,6 +35,8 @@ namespace BusquedaLaGaceta.Utils
 		
 		return result;
 	}
+
+        
     }
 }
 

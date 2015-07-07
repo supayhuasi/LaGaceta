@@ -46,6 +46,9 @@
     <Reference Include="Lucene.Net">
       <HintPath>Lib\Lucene\Lucene.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Lucene.Net.Contrib.Snowball">
+      <HintPath>Lib\Lucene.Net.Contrib.Snowball.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -152,9 +155,9 @@
     </Compile>
     <Compile Include="Utils\DocumentFunctions.cs" />
     <Compile Include="Utils\IndexFunctions.cs" />
+    <Compile Include="Utils\ManagerDirectory.cs" />
     <Compile Include="Utils\MultiLanguageAnalyzer.cs" />
     <Compile Include="Utils\SpanishStemFilter.cs" />
-    <Compile Include="Utils\Table_StopWordFunctions.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

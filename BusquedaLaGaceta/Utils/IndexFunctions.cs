@@ -17,7 +17,7 @@ namespace BusquedaLaGaceta.Utils
     class IndexFunctions
     {
         private AIEntities db = new AIEntities();
-	    Table_StopWordFunctions tableStopWordFunctions;
+	    //Table_StopWordFunctions tableStopWordFunctions;
 	    DocumentFunctions documentFunctions;
 	    private IndexWriter writer { get; set; }
         private static string indexPath { get; set; }
@@ -26,8 +26,7 @@ namespace BusquedaLaGaceta.Utils
 	 * Constructor.
 	 */
 	public IndexFunctions()
-	{ 		
-		tableStopWordFunctions = new Table_StopWordFunctions();
+	{ 				
 		documentFunctions = new DocumentFunctions();
 		
 		//this.setIndexPath(AUTOINDEXING_PROPERTIES.getString("IndexPath"));
@@ -50,7 +49,7 @@ namespace BusquedaLaGaceta.Utils
 	{	 
 		try
 		{              
-			writer = new IndexWriter(getDirectory(indexPath, getAnalyzer(true), IndexWriter.MaxFieldLength.UNLIMITED));
+			writer = new IndexWriter(getDirectory(indexPath), getAnalyzer(true));
 			//System.out.println("ADNRES getDirectory(this.getIndexPath())  "+getDirectory(this.getIndexPath()));
 			//setWriter(new IndexWriter(getDirectory(INDEX_PATH), getAnalyzer(true), IndexWriter.MaxFieldLength.UNLIMITED));
 		}
@@ -68,19 +67,19 @@ namespace BusquedaLaGaceta.Utils
 	{
 		try
 		{
-			writer.close();
+			writer.Close();
 		}
 		catch (CorruptIndexException e)
 		{
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			Resources.logError(e, null);
+			//Resources.logError(e, null);
 		}
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			Resources.logError(e, null);
+			//Resources.logError(e, null);
 		}
 	}
 	
@@ -136,7 +135,7 @@ namespace BusquedaLaGaceta.Utils
 	{
 	    StandardAnalyzer standardAnalyzer;
 	    string[] stopWordList = {};
-	    stopWordList = db.Table_StopWord.Select(x => x.StopWord_Word)..ToArray();
+	    stopWordList = db.Table_StopWord.Select(x => x.StopWord_Word).ToArray();
             //tableStopWordFunctions.getStopWordList();
 	    standardAnalyzer = new StandardAnalyzer(stopWordList);
 		
@@ -155,7 +154,7 @@ namespace BusquedaLaGaceta.Utils
 	    MultiLanguageAnalyzer multiLanguageAnalyzer;
 	    String[] stopWordList = {};
 	    
-	    stopWordList = tableStopWordFunctions.getStopWordList();
+	   // stopWordList = tableStopWordFunctions.getStopWordList();
 	    multiLanguageAnalyzer = new MultiLanguageAnalyzer(stopWordList);
 		
 	    return multiLanguageAnalyzer;
@@ -169,25 +168,25 @@ namespace BusquedaLaGaceta.Utils
 	 * 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void documentIndexer(File directoryToIndex, int fileType) throws IOException
-	{	
-		try
-		{
-			System.out.println("documentIndexer::"+"directoryToIndex : "+directoryToIndex+" - fileType : "+fileType);
-			documentFunctions.generateDocumentFromFS(directoryToIndex, getWriter(), fileType);
-			writer.optimize();
-			//writer.close();
-		}
-		catch (Exception e)
-		{
-			//e.printStackTrace();
-			Resources.logError(e, null);
-		}
-		finally
-		{
-			//writer.close();
-		}
-	}	
+    //public void documentIndexer(File directoryToIndex, int fileType)
+    //{	
+    //    try
+    //    {
+    //        //System.out.println("documentIndexer::"+"directoryToIndex : "+directoryToIndex+" - fileType : "+fileType);
+    //        documentFunctions.generateDocumentFromFS(directoryToIndex, getWriter(), fileType);
+    //        writer.optimize();
+    //        //writer.close();
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        //e.printStackTrace();
+    //        Resources.logError(e, null);
+    //    }
+    //    finally
+    //    {
+    //        //writer.close();
+    //    }
+    //}	
 
     }
 }

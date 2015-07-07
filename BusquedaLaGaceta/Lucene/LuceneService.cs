@@ -26,7 +26,7 @@ namespace SimpleLuceneSearch
         private Analyzer analyzer = new WhitespaceAnalyzer(); 
         private Directory luceneIndexDirectory;
         private IndexWriter writer;
-        Lucene.Net.Index.in indexFunctions;
+        //Lucene.Net.Index.ind indexFunctions;
         private string indexPath = @"E:\Trabajo\Aplika\La Gaceta\db_lucene\R341-21-03-1970-26-04-1970";
 
         public LuceneService()
@@ -62,6 +62,30 @@ namespace SimpleLuceneSearch
 
         public IEnumerable<SampleDataFileRow> Search(string searchTerm)
         {
+           
+            
+            ManagerDirectory mg = new ManagerDirectory();
+		List<SearchResult> result =  new ArrayList<SearchResult>(); 
+	    for(int h=0;h<dbLucenePath.length;h++){
+	    	//INDEX_PATH=dbLucenePath[h];
+		    System.out.println("\n\n\nINDEX_PATH::"+INDEX_PATH+"\n\n\n");
+		// result = new ArrayList<SearchResult>();
+		Searcher searcher = new IndexSearcher(IndexReader.open(INDEX_PATH));
+		
+		//QueryParser queryParser = new QueryParser(DocumentFunctions.CONTENT, new StandardAnalyzer());
+		QueryParser queryParser = new QueryParser(DocumentFunctions.CONTENT, indexFunctions.getAnalyzer(true));
+		Query query = queryParser.parse(keyWord);		
+		ScoreDoc[] scoreDoc = searcher.search(query, 20).scoreDocs;
+		String pathTemp;
+            
+            
+            
+            
+            
+            
+            
+            
+            
             IndexSearcher searcher = new IndexSearcher(luceneIndexDirectory);
             QueryParser parser = new QueryParser(DocumentFunctions.CONTENT, analyzer);
 
