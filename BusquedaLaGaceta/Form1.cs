@@ -14,6 +14,7 @@ namespace BusquedaLaGaceta
     public partial class Form1 : Form
     {
         private LuceneService luceneService;
+        
         public Form1()
         {
             luceneService= new LuceneService();            
@@ -27,7 +28,7 @@ namespace BusquedaLaGaceta
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            luceneService.Search(txtBuscar.Text);
+            luceneService.Search(txtBuscar.Text,fechaDesde.Value,fechaHasta.Value,true);
         }
     }
 }

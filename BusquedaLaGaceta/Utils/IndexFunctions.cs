@@ -10,6 +10,7 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Store;
 using Directory = Lucene.Net.Store.Directory;
+using Version = Lucene.Net.Util.Version;
 
 
 namespace BusquedaLaGaceta.Utils
@@ -48,8 +49,8 @@ namespace BusquedaLaGaceta.Utils
 	public IndexWriter createIndex() 
 	{	 
 		try
-		{              
-			writer = new IndexWriter(getDirectory(indexPath), getAnalyzer(true));
+		{
+            writer = new IndexWriter(getDirectory(indexPath), getAnalyzer(true), IndexWriter.MaxFieldLength.UNLIMITED);
 			//System.out.println("ADNRES getDirectory(this.getIndexPath())  "+getDirectory(this.getIndexPath()));
 			//setWriter(new IndexWriter(getDirectory(INDEX_PATH), getAnalyzer(true), IndexWriter.MaxFieldLength.UNLIMITED));
 		}
@@ -94,7 +95,7 @@ namespace BusquedaLaGaceta.Utils
 	 */
 	protected FSDirectory getDirectory(string path)
 	{
-	    return FSDirectory.GetDirectory(path);
+	    return FSDirectory.Open(path);
 	}
 		
 	/**
@@ -134,10 +135,10 @@ namespace BusquedaLaGaceta.Utils
 	private Analyzer getStandardAnalyzer() 
 	{
 	    StandardAnalyzer standardAnalyzer;
-	    string[] stopWordList = {};
-	    stopWordList = db.Table_StopWord.Select(x => x.StopWord_Word).ToArray();
+	    
+	    var stopWordList = db.Table_StopWord.Select(x => x.StopWord_Word);
             //tableStopWordFunctions.getStopWordList();
-	    standardAnalyzer = new StandardAnalyzer(stopWordList);
+	    standardAnalyzer = new StandardAnalyzer(Version.LUCENE_22,new HashSet<string>(stopWordList));
 		
 	    return standardAnalyzer;
 	}
@@ -153,8 +154,8 @@ namespace BusquedaLaGaceta.Utils
 	{
 	    MultiLanguageAnalyzer multiLanguageAnalyzer;
 	    String[] stopWordList = {};
-	    
-	   // stopWordList = tableStopWordFunctions.getStopWordList();
+
+        stopWordList = db.Table_StopWord.Select(x => x.StopWord_Word).ToArray();
 	    multiLanguageAnalyzer = new MultiLanguageAnalyzer(stopWordList);
 		
 	    return multiLanguageAnalyzer;

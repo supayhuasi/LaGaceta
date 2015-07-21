@@ -38,8 +38,8 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblPalabrasBuscar = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.fechaDesde = new System.Windows.Forms.DateTimePicker();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -53,7 +53,7 @@
             this.flowLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flowLayoutPanel1.BackgroundImage")));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(718, 65);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(955, 65);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // grp1
@@ -65,8 +65,8 @@
             this.grp1.Controls.Add(this.btnBuscar);
             this.grp1.Controls.Add(this.txtBuscar);
             this.grp1.Controls.Add(this.lblPalabrasBuscar);
-            this.grp1.Controls.Add(this.dateTimePicker2);
-            this.grp1.Controls.Add(this.dateTimePicker1);
+            this.grp1.Controls.Add(this.fechaHasta);
+            this.grp1.Controls.Add(this.fechaDesde);
             this.grp1.Controls.Add(this.checkBox2);
             this.grp1.Controls.Add(this.checkBox1);
             this.grp1.Controls.Add(this.radioButton1);
@@ -140,28 +140,29 @@
             this.lblPalabrasBuscar.Text = "Palabras a buscar";
             this.lblPalabrasBuscar.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dateTimePicker2
+            // fechaHasta
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(13, 107);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePicker2.TabIndex = 4;
+            this.fechaHasta.Location = new System.Drawing.Point(13, 107);
+            this.fechaHasta.Name = "fechaHasta";
+            this.fechaHasta.Size = new System.Drawing.Size(153, 20);
+            this.fechaHasta.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // fechaDesde
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(13, 81);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePicker1.TabIndex = 3;
+            this.fechaDesde.Location = new System.Drawing.Point(13, 81);
+            this.fechaDesde.MinDate = new System.DateTime(1912, 8, 4, 0, 0, 0, 0);
+            this.fechaDesde.Name = "fechaDesde";
+            this.fechaDesde.Size = new System.Drawing.Size(153, 20);
+            this.fechaDesde.TabIndex = 3;
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(100, 44);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
+            this.checkBox2.Size = new System.Drawing.Size(58, 17);
             this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.Text = "Rango";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox1
@@ -169,20 +170,21 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(13, 44);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(53, 17);
             this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "Diario";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(13, 20);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.Size = new System.Drawing.Size(120, 17);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.Text = "busqueda por fecha";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
@@ -197,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 521);
+            this.ClientSize = new System.Drawing.Size(1009, 521);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.grp1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -221,8 +223,8 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblPalabrasBuscar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker fechaHasta;
+        private System.Windows.Forms.DateTimePicker fechaDesde;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.RadioButton radioButton1;

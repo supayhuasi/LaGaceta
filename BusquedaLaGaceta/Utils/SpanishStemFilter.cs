@@ -33,12 +33,12 @@ namespace BusquedaLaGaceta.Utils
         //}
         //else 
         //{
-			stemmer.SetCurrent(token.TermText());
+	    stemmer.SetCurrent(token.Term);
 			stemmer.Stem();
 	        string s = stemmer.GetCurrent();
-			if ( !s.Equals(token.TermText())) 
+			if ( !s.Equals(token.Term)) 
 			{
-				return new Token(s, token.StartOffset(), token.EndOffset(), token.Type());
+				return new Token(s, token.StartOffset, token.EndOffset, token.Type);
 			}
 			return token;
 	//	}
@@ -51,6 +51,11 @@ namespace BusquedaLaGaceta.Utils
         public SpanishStemFilter(TokenStream input) : base(input)
         {
             stemmer = new SpanishStemmer();
+        }
+
+        public override bool IncrementToken()
+        {
+            throw new NotImplementedException();
         }
     }
 }
