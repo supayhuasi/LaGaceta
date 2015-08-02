@@ -61,6 +61,16 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _01_04_1970_2 {
+            get {
+                object obj = ResourceManager.GetObject("01-04-1970-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E:\\Trabajo\\Aplika\\La Gaceta\\db_lucene.
         /// </summary>
         internal static string IndexPath {
