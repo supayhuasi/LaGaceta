@@ -29,5 +29,6 @@ namespace BusquedaLaGaceta
                 settingsForm.Show();                
             }
         }
+        
     }
 }

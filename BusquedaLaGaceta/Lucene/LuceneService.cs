@@ -65,7 +65,7 @@ namespace SimpleLuceneSearch
 			luceneIndexDirectory.Close();
 		}
 
-        public List<SearchResult> Search(string searchTerm, DateTime fechaDesde, DateTime fechaHasta, bool bDiario)
+		public List<SearchResult> Search(string searchTerm, DateTime fechaDesde, DateTime fechaHasta, bool bDiario)
 		{
 		   
 			
@@ -92,7 +92,7 @@ namespace SimpleLuceneSearch
 				var document = searcher.Doc(a[i].Doc);
 				SearchResult searchResult = new SearchResult();
 				searchResult.Name = document.GetField(DocumentFunctions.NAME).StringValue;
-				searchResult.Path = document.GetField(DocumentFunctions.PATH).StringValue;                
+				searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);                
 				result.Add(searchResult);
 			}
 			}

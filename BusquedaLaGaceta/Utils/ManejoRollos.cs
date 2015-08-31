@@ -21,5 +21,30 @@ namespace BusquedaLaGaceta.Utils
                 db.Table_LuceneDBIndexAddress.Where(x => x.Date_From >= fechaDesde && x.Date_To <= fechaHasta);
             return resultado;            
         }
+        public string FilePath(string fileName)
+        {
+            var nombreArchivo = fileName.IndexOf("scan");
+            fileName = fileName.Remove(0, nombreArchivo);
+            var resultado =
+                db.Table_File_Names.Where(x => x.File_Name==fileName).FirstOrDefault();
+            if (resultado != null)
+                return resultado.Directory.Replace("O:\\", "E:\\").TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+            else
+                return "imagen vacia";
+        }
+        public string nombreArchivoPagina(string fileName)
+        {
+            var nombreArchivo = fileName.IndexOf("scan");
+            fileName = fileName.Remove(0, nombreArchivo);
+            var resultado =
+                db.Table_File_Names.Where(x => x.File_Name == fileName).FirstOrDefault();
+            return resultado.File_Rename.TrimEnd();
+        }
+        public string FileRenamePath(string fileName)
+        {                        
+            var resultado =
+                db.Table_File_Names.Where(x => x.File_Rename == fileName).FirstOrDefault();
+            return resultado.Directory.Replace("O:\\", "E:\\").TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+        }
     }
 }

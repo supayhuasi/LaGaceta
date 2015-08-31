@@ -43,12 +43,11 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\Lucene.Net.dll</HintPath>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\..\..\Downloads\Apache-Lucene.Net-3.0.3-RC2.bin\NET40\bin\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net.Contrib.Snowball">
-      <HintPath>Lib\Lucene.Net.Contrib.Snowball.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\Apache-Lucene.Net-3.0.3-RC2.bin\NET40\bin\Contrib\Lucene.Net.Contrib.Snowball.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -65,6 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AIDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,17 +84,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Form1.cs">
+    <Compile Include="Gui\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Gui\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gui\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\UsuarioAM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\UsuarioAM.Designer.cs">
+      <DependentUpon>UsuarioAM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Lucene\LuceneService.cs" />
     <Compile Include="Lucene\SampleDataFileReader.cs" />
@@ -162,17 +178,25 @@
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\DocumentFunctions.cs" />
+    <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\IndexFunctions.cs" />
     <Compile Include="Utils\ManagerDirectory.cs" />
     <Compile Include="Utils\ManejoRollos.cs" />
     <Compile Include="Utils\MultiLanguageAnalyzer.cs" />
     <Compile Include="Utils\SearchResult.cs" />
     <Compile Include="Utils\SpanishStemFilter.cs" />
-    <EmbeddedResource Include="Gui\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Utils\ManejoUsuarios.cs" />
+    <EmbeddedResource Include="Gui\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\UsuarioAM.resx">
+      <DependentUpon>UsuarioAM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -188,6 +212,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BaseDatos.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="AIDataSet.xsc">
+      <DependentUpon>AIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AIDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AIDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AIDataSet.xss">
+      <DependentUpon>AIDataSet.xsd</DependentUpon>
+    </None>
     <None Include="BaseDatos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BaseDatos.edmx</DependentUpon>
@@ -213,12 +248,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Imagenes\setting.png" />
     <Content Include="Imagenes\top-consulta-de-documentos.jpg" />
     <Content Include="Lucene\SampleDataFile.txt" />
     <None Include="Resources\01-04-1970-2.JPG" />
