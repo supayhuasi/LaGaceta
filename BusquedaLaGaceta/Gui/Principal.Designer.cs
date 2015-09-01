@@ -33,14 +33,13 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.lresultado = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblPalabrasBuscar = new System.Windows.Forms.Label();
             this.fechaHasta = new System.Windows.Forms.DateTimePicker();
             this.fechaDesde = new System.Windows.Forms.DateTimePicker();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkRango = new System.Windows.Forms.CheckBox();
+            this.chkDiario = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -50,11 +49,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,16 +72,16 @@
             // 
             // grp1
             // 
+            this.grp1.Controls.Add(this.btnImprimir);
             this.grp1.Controls.Add(this.lresultado);
             this.grp1.Controls.Add(this.btnLimpiar);
-            this.grp1.Controls.Add(this.button2);
             this.grp1.Controls.Add(this.btnBuscar);
             this.grp1.Controls.Add(this.txtBuscar);
             this.grp1.Controls.Add(this.lblPalabrasBuscar);
             this.grp1.Controls.Add(this.fechaHasta);
             this.grp1.Controls.Add(this.fechaDesde);
-            this.grp1.Controls.Add(this.checkBox2);
-            this.grp1.Controls.Add(this.checkBox1);
+            this.grp1.Controls.Add(this.chkRango);
+            this.grp1.Controls.Add(this.chkDiario);
             this.grp1.Controls.Add(this.radioButton1);
             this.grp1.Location = new System.Drawing.Point(0, 72);
             this.grp1.Name = "grp1";
@@ -99,21 +100,13 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(100, 229);
+            this.btnLimpiar.Location = new System.Drawing.Point(16, 229);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.Size = new System.Drawing.Size(159, 23);
             this.btnLimpiar.TabIndex = 9;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(16, 230);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -159,25 +152,29 @@
             this.fechaDesde.TabIndex = 3;
             this.fechaDesde.Value = new System.DateTime(1970, 2, 6, 0, 0, 0, 0);
             // 
-            // checkBox2
+            // chkRango
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(100, 44);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(58, 17);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Rango";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chkRango.AutoSize = true;
+            this.chkRango.Checked = true;
+            this.chkRango.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRango.Location = new System.Drawing.Point(100, 44);
+            this.chkRango.Name = "chkRango";
+            this.chkRango.Size = new System.Drawing.Size(58, 17);
+            this.chkRango.TabIndex = 2;
+            this.chkRango.Text = "Rango";
+            this.chkRango.UseVisualStyleBackColor = true;
+            this.chkRango.CheckedChanged += new System.EventHandler(this.chkRango_CheckedChanged);
             // 
-            // checkBox1
+            // chkDiario
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 44);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(53, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Diario";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkDiario.AutoSize = true;
+            this.chkDiario.Location = new System.Drawing.Point(13, 44);
+            this.chkDiario.Name = "chkDiario";
+            this.chkDiario.Size = new System.Drawing.Size(53, 17);
+            this.chkDiario.TabIndex = 1;
+            this.chkDiario.Text = "Diario";
+            this.chkDiario.UseVisualStyleBackColor = true;
+            this.chkDiario.CheckedChanged += new System.EventHandler(this.chkDiario_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -264,15 +261,11 @@
             this.panel2.Size = new System.Drawing.Size(831, 32);
             this.panel2.TabIndex = 10;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usuariosToolStripMenuItem});
+            this.usuariosToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(831, 24);
@@ -301,6 +294,27 @@
             this.perfilesToolStripMenuItem.Name = "perfilesToolStripMenuItem";
             this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.perfilesToolStripMenuItem.Text = "Perfiles";
+            this.perfilesToolStripMenuItem.Click += new System.EventHandler(this.perfilesToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(16, 255);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(159, 23);
+            this.btnImprimir.TabIndex = 11;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -318,6 +332,7 @@
             this.Controls.Add(this.grp1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pantalla Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -339,14 +354,13 @@
         private System.Windows.Forms.GroupBox grp1;
         private System.Windows.Forms.Label lresultado;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblPalabrasBuscar;
         private System.Windows.Forms.DateTimePicker fechaHasta;
         private System.Windows.Forms.DateTimePicker fechaDesde;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkRango;
+        private System.Windows.Forms.CheckBox chkDiario;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TreeView treeView1;
@@ -361,6 +375,8 @@
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem perfilesToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
 

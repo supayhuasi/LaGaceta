@@ -1,6 +1,6 @@
 ﻿namespace BusquedaLaGaceta.Gui
 {
-    partial class UsuarioAM
+    partial class PerfilesAM
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContrasenia = new System.Windows.Forms.TextBox();
-            this.cboPerfiles = new System.Windows.Forms.ComboBox();
-            this.txtContrasenia2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -65,9 +61,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Usuario";
+            this.label1.Text = "Nombre";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -75,20 +71,10 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Contraseña";
+            this.label2.Text = "Descripcion";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Perfiles";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtUsuario
             // 
@@ -104,48 +90,18 @@
             this.txtContrasenia.Size = new System.Drawing.Size(170, 20);
             this.txtContrasenia.TabIndex = 6;
             // 
-            // cboPerfiles
-            // 
-            this.cboPerfiles.FormattingEnabled = true;
-            this.cboPerfiles.Location = new System.Drawing.Point(117, 128);
-            this.cboPerfiles.Name = "cboPerfiles";
-            this.cboPerfiles.Size = new System.Drawing.Size(170, 21);
-            this.cboPerfiles.TabIndex = 7;
-            this.cboPerfiles.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // txtContrasenia2
-            // 
-            this.txtContrasenia2.Location = new System.Drawing.Point(117, 102);
-            this.txtContrasenia2.Name = "txtContrasenia2";
-            this.txtContrasenia2.Size = new System.Drawing.Size(170, 20);
-            this.txtContrasenia2.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 102);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Repetir Contraseña";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // UsuarioAM
+            // PerfilesAM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 261);
-            this.Controls.Add(this.txtContrasenia2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cboPerfiles);
             this.Controls.Add(this.txtContrasenia);
             this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Name = "UsuarioAM";
+            this.Name = "PerfilesAM";
             this.Text = "UsuarioAM";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,11 +114,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContrasenia;
-        private System.Windows.Forms.ComboBox cboPerfiles;
-        private System.Windows.Forms.TextBox txtContrasenia2;
-        private System.Windows.Forms.Label label4;
     }
 }

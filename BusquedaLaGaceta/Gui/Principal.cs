@@ -37,7 +37,11 @@ namespace BusquedaLaGaceta
         {
             treeView1.Nodes.Clear();
             int i=0;
-            var resultados = luceneService.Search(txtBuscar.Text,fechaDesde.Value,fechaHasta.Value,true);
+            List<SearchResult> resultados;
+            if(!chkDiario.Checked)
+            resultados = luceneService.Search(txtBuscar.Text,fechaDesde.Value,fechaHasta.Value,true);
+            else
+                resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaDesde.Value, true);
             lresultado.Text = resultados.Count.ToString();
             foreach (var resultado in resultados)
             {
@@ -124,6 +128,46 @@ namespace BusquedaLaGaceta
         {
             Usuarios usuarios = new Usuarios();
             usuarios.Show();  
+        }
+
+        private void chkDiario_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDiario.Checked == true)
+            {
+                fechaHasta.Enabled = false;
+                chkRango.Checked = false;
+            }
+            else
+            {
+                fechaHasta.Enabled = true;
+                chkRango.Checked = true;
+            }
+        }
+
+        private void chkRango_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkRango.Checked == true)
+            {
+                fechaHasta.Enabled = true;
+                chkDiario.Checked = false;
+            }
+            else
+            {
+                fechaHasta.Enabled = false;
+                chkDiario.Checked = true;
+            }
+        }
+
+        private void perfilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Perfiles usuarios = new Perfiles();
+            usuarios.Show();  
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBuscar.Text = "";
+            treeView1.Nodes.Clear();
         }
 
     }

@@ -11,16 +11,13 @@ using System.Windows.Forms;
 
 namespace BusquedaLaGaceta.Gui
 {
-    public partial class UsuarioAM : Form
+    public partial class PerfilesAM : Form
     {
         private ManejoUsuarios usuarioDAL { get; set; }
-        public UsuarioAM()
+        public PerfilesAM()
         {
             InitializeComponent();
-            usuarioDAL = new ManejoUsuarios();
-            cboPerfiles.DataSource = usuarioDAL.listaPerfiles();
-            cboPerfiles.DisplayMember = "name";
-            cboPerfiles.ValueMember = "id";
+            usuarioDAL = new ManejoUsuarios();            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -79,7 +79,7 @@
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Administrar";
-            this.button1.UseVisualStyleBackColor = true;            
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -122,6 +122,7 @@
             this.ClientSize = new System.Drawing.Size(413, 229);
             this.Controls.Add(this.panel1);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

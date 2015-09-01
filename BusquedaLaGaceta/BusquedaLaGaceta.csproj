@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AIDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AIDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AIDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,11 +101,23 @@
     <Compile Include="Gui\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\PerfilesAM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\PerfilesAM.Designer.cs">
+      <DependentUpon>PerfilesAM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\UsuarioAM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gui\UsuarioAM.Designer.cs">
       <DependentUpon>UsuarioAM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Perfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Perfiles.Designer.cs">
+      <DependentUpon>Perfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\Usuarios.cs">
       <SubType>Form</SubType>
@@ -192,8 +209,14 @@
     <EmbeddedResource Include="Gui\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gui\PerfilesAM.resx">
+      <DependentUpon>PerfilesAM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\UsuarioAM.resx">
       <DependentUpon>UsuarioAM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Perfiles.resx">
+      <DependentUpon>Perfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -222,6 +245,17 @@
     </None>
     <None Include="AIDataSet.xss">
       <DependentUpon>AIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AIDataSet1.xsc">
+      <DependentUpon>AIDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="AIDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AIDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AIDataSet1.xss">
+      <DependentUpon>AIDataSet1.xsd</DependentUpon>
     </None>
     <None Include="BaseDatos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
