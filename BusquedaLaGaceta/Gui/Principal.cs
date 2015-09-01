@@ -170,5 +170,10 @@ namespace BusquedaLaGaceta
             treeView1.Nodes.Clear();
         }
 
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

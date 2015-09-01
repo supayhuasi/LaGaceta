@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.grp1 = new System.Windows.Forms.GroupBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.lresultado = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -44,18 +46,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnMaximizar = new System.Windows.Forms.Button();
-            this.btnMinizar = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImprimir = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnMinizar = new System.Windows.Forms.Button();
+            this.btnMaximizar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -90,6 +93,15 @@
             this.grp1.TabStop = false;
             this.grp1.Text = "Busqueda por Fecha";
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(16, 234);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(159, 23);
+            this.btnImprimir.TabIndex = 11;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            // 
             // lresultado
             // 
             this.lresultado.AutoSize = true;
@@ -100,9 +112,9 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(16, 229);
+            this.btnLimpiar.Location = new System.Drawing.Point(94, 201);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(159, 23);
+            this.btnLimpiar.Size = new System.Drawing.Size(81, 23);
             this.btnLimpiar.TabIndex = 9;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -110,11 +122,14 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.Location = new System.Drawing.Point(16, 201);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(159, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(72, 23);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -201,7 +216,7 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(13, 377);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(174, 132);
+            this.treeView1.Size = new System.Drawing.Size(174, 138);
             this.treeView1.TabIndex = 3;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -211,47 +226,8 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(207, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(748, 454);
+            this.panel1.Size = new System.Drawing.Size(917, 566);
             this.panel1.TabIndex = 4;
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Location = new System.Drawing.Point(1017, 103);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(75, 23);
-            this.btnMaximizar.TabIndex = 5;
-            this.btnMaximizar.Text = "Maximizar";
-            this.btnMaximizar.UseVisualStyleBackColor = true;
-            this.btnMaximizar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnMinizar
-            // 
-            this.btnMinizar.Location = new System.Drawing.Point(1017, 132);
-            this.btnMinizar.Name = "btnMinizar";
-            this.btnMinizar.Size = new System.Drawing.Size(75, 23);
-            this.btnMinizar.TabIndex = 6;
-            this.btnMinizar.Text = "Minimizar";
-            this.btnMinizar.UseVisualStyleBackColor = true;
-            this.btnMinizar.Click += new System.EventHandler(this.btnMinizar_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(1017, 161);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Original";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(1017, 191);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "Pantalla";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // panel2
             // 
@@ -285,21 +261,16 @@
             // usuariosToolStripMenuItem1
             // 
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
-            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
             this.usuariosToolStripMenuItem1.Text = "Usuarios";
             this.usuariosToolStripMenuItem1.Click += new System.EventHandler(this.usuariosToolStripMenuItem1_Click);
             // 
             // perfilesToolStripMenuItem
             // 
             this.perfilesToolStripMenuItem.Name = "perfilesToolStripMenuItem";
-            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.perfilesToolStripMenuItem.Text = "Perfiles";
             this.perfilesToolStripMenuItem.Click += new System.EventHandler(this.perfilesToolStripMenuItem_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -307,26 +278,86 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // btnImprimir
+            // contextMenuStrip1
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(16, 255);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(159, 23);
-            this.btnImprimir.TabIndex = 11;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(112, 615);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "Pantalla";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(112, 585);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "Original";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // btnMinizar
+            // 
+            this.btnMinizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinizar.Image")));
+            this.btnMinizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMinizar.Location = new System.Drawing.Point(112, 556);
+            this.btnMinizar.Name = "btnMinizar";
+            this.btnMinizar.Size = new System.Drawing.Size(75, 23);
+            this.btnMinizar.TabIndex = 12;
+            this.btnMinizar.Text = "Minimizar";
+            this.btnMinizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMinizar.UseVisualStyleBackColor = true;
+            this.btnMinizar.Click += new System.EventHandler(this.btnMinizar_Click);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMaximizar.Location = new System.Drawing.Point(112, 527);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(75, 23);
+            this.btnMaximizar.TabIndex = 11;
+            this.btnMaximizar.Text = "Maximizar";
+            this.btnMaximizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMaximizar.UseVisualStyleBackColor = true;
+            this.btnMaximizar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 527);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 556);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Minimizar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1136, 648);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1136, 667);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnMinizar);
             this.Controls.Add(this.btnMaximizar);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.grp1);
@@ -365,10 +396,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnMaximizar;
-        private System.Windows.Forms.Button btnMinizar;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
@@ -377,6 +404,12 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnMinizar;
+        private System.Windows.Forms.Button btnMaximizar;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

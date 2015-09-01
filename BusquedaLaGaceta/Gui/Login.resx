@@ -117,4 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABd0lEQVQ4T3WQ2WrCQBSGx3kqYzGLGiMZ
+        jUv0Rp8p4N28h6/QQsFCFwothWrdulitC3gRenM6f5rYYu3AR07O//1kYZt6PbVpNIKt74c73+9Su83Z
+        wcEOGRy46LBNrRas63UC20aDPptNSZ3OvowZO2SJhw5bVqvhqlqljxi1pND3JbVaHGDGLsnhosMGQnTX
+        nkerSoWWCbj3PAkwJ3s4cNFhN67Lx0LIdblMCyHo/R+QwYGLTvQd9+UyH7muXLguzRVvB2CHDA7cqJSc
+        frHIH2xbvpZK9HIAdsjgxPrPCYXgc8eRs2KRjoEMTqx/H1KPX6rg2bZpWigcBRkcuFFp5zh8oV5jls/T
+        OJeLmMTXwxkOXHTY1LK6Y9OkJ8uKGCkmimvTlAAzdkkOFx32qOvh0DBooMB1orhThTPD4AAzdr8ddNjF
+        yUkwzGYJjHSdbrNZeWlZ+5+AGTtkiYcO62la6jydDq4ymbCvad1TXf/zy7FDBgduT9NSX5A7eCDRUPtB
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABZ0lE
+        QVQ4T82QO0vDUBiGY60WRHBw88e0aZrGnObk0iZpaO1FCnZwd1BwFn+AONpBBCdFFEFwEkFUpILaa9I0
+        SrQIzi2lfqY1IA7tqg88fJz3nPcMH/F/WYaMJ99Lbi51kwVHrxuPJg8L44sf6nbaliFlxyBtx3bdq+Hk
+        PjVv6j1aSFgiJEwBEs8iaGX+gki3ZSLTltezHWU1B5rHfT8g21MnEy1xP25iUA0O4hYGTcfnyhU3TchW
+        ZEVpRkC1IhBv8YfJjjTTLyXbkk99w0dyA0FMZ0FuIlB07lS556YGvwqlcE1qMCDqYZAMBqIvbEl+ZWln
+        nvXPg9x08ip7ELtDvkGpD76kZ4USfcybIeDrjjXK0ZlVCrAjb4RAKNN74i0z4VZ+EIqMB1foNc6kupE6
+        CagS+FYngXsK7vA39Oj140qIQnrAZht+mDf8wD76t7hr6tfChoIegnPIIk+QSW6gYnDMjf8cgvgCaD+q
+        O16JYpQAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

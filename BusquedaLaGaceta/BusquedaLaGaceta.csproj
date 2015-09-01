@@ -130,6 +130,11 @@
     <Compile Include="Lucene\SampleDataFileRow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Seguridad\SeguridadLogin.cs" />
     <Compile Include="Table.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
@@ -223,14 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EntityDeploy Include="BaseDatos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BaseDatos.Designer.cs</LastGenOutput>
@@ -290,7 +290,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Imagenes\setting.png" />
+    <None Include="Imagenes\success_opt.png" />
     <Content Include="Imagenes\top-consulta-de-documentos.jpg" />
     <Content Include="Lucene\SampleDataFile.txt" />
     <None Include="Resources\01-04-1970-2.JPG" />

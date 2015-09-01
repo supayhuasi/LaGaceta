@@ -82,9 +82,9 @@ namespace BusquedaLaGaceta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap setting {
+        internal static System.Drawing.Bitmap success_opt {
             get {
-                object obj = ResourceManager.GetObject("setting", resourceCulture);
+                object obj = ResourceManager.GetObject("success_opt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
