@@ -59,6 +59,8 @@
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnCortar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -68,9 +70,10 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.flowLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flowLayoutPanel1.BackgroundImage")));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 26);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(955, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1137, 43);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // grp1
@@ -86,9 +89,9 @@
             this.grp1.Controls.Add(this.chkRango);
             this.grp1.Controls.Add(this.chkDiario);
             this.grp1.Controls.Add(this.radioButton1);
-            this.grp1.Location = new System.Drawing.Point(0, 72);
+            this.grp1.Location = new System.Drawing.Point(0, 92);
             this.grp1.Name = "grp1";
-            this.grp1.Size = new System.Drawing.Size(187, 299);
+            this.grp1.Size = new System.Drawing.Size(187, 279);
             this.grp1.TabIndex = 1;
             this.grp1.TabStop = false;
             this.grp1.Text = "Busqueda por Fecha";
@@ -211,6 +214,8 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // treeView1
             // 
@@ -345,12 +350,34 @@
             this.button2.Text = "Minimizar";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // btnCortar
+            // 
+            this.btnCortar.Location = new System.Drawing.Point(12, 585);
+            this.btnCortar.Name = "btnCortar";
+            this.btnCortar.Size = new System.Drawing.Size(75, 23);
+            this.btnCortar.TabIndex = 17;
+            this.btnCortar.Text = "Cortar";
+            this.btnCortar.UseVisualStyleBackColor = true;
+            this.btnCortar.Click += new System.EventHandler(this.btnCortar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(13, 614);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 18;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1136, 667);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnCortar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button6);
@@ -410,6 +437,8 @@
         private System.Windows.Forms.Button btnMaximizar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCortar;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }
 

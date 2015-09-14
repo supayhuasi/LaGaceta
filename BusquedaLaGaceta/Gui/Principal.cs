@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SimpleLuceneSearch;
 using BusquedaLaGaceta.Utils;
 using BusquedaLaGaceta.Gui;
+using System.Drawing.Imaging;
 
 namespace BusquedaLaGaceta
 {
@@ -19,6 +20,8 @@ namespace BusquedaLaGaceta
         private ManejoRollos rollos;
         private Image imagenSeleccionada;
         private ImageUtils funcionesImagenes;
+        private string NameImagen;
+        private string rolloImagen;
         public Form1()
         {
             luceneService= new LuceneService();
@@ -73,7 +76,7 @@ namespace BusquedaLaGaceta
                 pictureBox1.Image = Image.FromFile(path);
                 imagenSeleccionada = Image.FromFile(path);
                 pictureBox1.Width = pictureBox1.Image.Width;
-                pictureBox1.Height = pictureBox1.Image.Height;
+                pictureBox1.Height = pictureBox1.Image.Height;                
                 return true;
 
             }
@@ -175,5 +178,59 @@ namespace BusquedaLaGaceta
 
         }
 
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            xUp = e.X;
+            yUp = e.Y;
+
+            Rectangle rec = new Rectangle(xDown, yDown, Math.Abs(xUp - xDown), Math.Abs(yUp - yDown));
+
+            using (Pen pen = new Pen(Color.YellowGreen, 3))
+            {
+
+                pictureBox1.CreateGraphics().DrawRectangle(pen, rec);
+            }
+
+            xDown = xDown * pictureBox1.Image.Width / pictureBox1.Width;
+            yDown = yDown * pictureBox1.Image.Height / pictureBox1.Height;
+
+            xUp = xUp * pictureBox1.Image.Width / pictureBox1.Width;
+            yUp = yUp * pictureBox1.Image.Height / pictureBox1.Height;
+
+            rectCropArea = new Rectangle(xDown, yDown, Math.Abs(xUp - xDown), Math.Abs(yUp - yDown));
+    
+        }
+
+
+        public int xDown { get; set; }
+
+        public int yDown { get; set; }
+
+        public int xUp { get; set; }
+
+        public int yUp { get; set; }
+
+        public Rectangle rectCropArea { get; set; }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Invalidate();
+
+            xDown = e.X;
+            yDown = e.Y;
+        }
+
+        private void btnCortar_Click(object sender, EventArgs e)
+        {
+
+            imagenSeleccionada = ImageUtils.recortarImagen(pictureBox1.Image, rectCropArea);
+            pictureBox1.Image = imagenSeleccionada;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            
+            pictureBox1.Image.Save("O:\\Archivos Indexing\\Imagenes Cortadas\\" + NameImagen + ".jpg", ImageFormat.Jpeg);
+        }
     }
 }

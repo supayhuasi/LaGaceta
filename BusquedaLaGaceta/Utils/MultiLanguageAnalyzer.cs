@@ -13,7 +13,7 @@ namespace BusquedaLaGaceta.Utils
 {
     class MultiLanguageAnalyzer : Analyzer
     {
-        private ISet<string> stopTable { get; set; }
+        //private ISet<string> stopTable { get; set; }
                             
 
         /**
@@ -22,7 +22,7 @@ namespace BusquedaLaGaceta.Utils
 	
 	public MultiLanguageAnalyzer(string[] stopWords)
 	{
-		stopTable = StopFilter.MakeStopSet(stopWords);
+		//stopTable = StopFilter.MakeStopSet(stopWords);
 	}
 
 
@@ -31,7 +31,7 @@ namespace BusquedaLaGaceta.Utils
 		TokenStream result = new StandardTokenizer(Version.LUCENE_20, reader);
 		result = new StandardFilter(result);
 		result = new LowerCaseFilter(result);
-		result = new StopFilter(false,result, stopTable);
+		//result = new StopFilter(false,result, stopTable);
 		result = new SpanishStemFilter(result);
 		
 		return result;

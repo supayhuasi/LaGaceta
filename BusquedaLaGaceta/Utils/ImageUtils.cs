@@ -29,5 +29,19 @@ namespace BusquedaLaGaceta.Utils
 
             return newImage;
         }
+        public static Image recortarImagen(Image imagen, Rectangle recuadro)
+        {
+            try
+            {
+                Bitmap bitmap = new Bitmap(imagen);
+                Bitmap cropedBitmap = bitmap.Clone(recuadro, bitmap.PixelFormat);
+
+                return (Image)(cropedBitmap);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
