@@ -71,7 +71,43 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E:\\Trabajo\\Aplika\\La Gaceta\\db_lucene.
+        ///   Looks up a localized string similar to E:\\.
+        /// </summary>
+        internal static string DiscoImagenes {
+            get {
+                return ResourceManager.GetString("DiscoImagenes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E:\\ARCHIVOS INDEXING\\.
+        /// </summary>
+        internal static string Imagenes {
+            get {
+                return ResourceManager.GetString("Imagenes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O:\\Archivos Indexing\\Imagenes Cortadas\\.
+        /// </summary>
+        internal static string ImagenesCortadas {
+            get {
+                return ResourceManager.GetString("ImagenesCortadas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E:\\ARCHIVOS INDEXING\\noencontrada.png.
+        /// </summary>
+        internal static string ImagenNoEncontrada {
+            get {
+                return ResourceManager.GetString("ImagenNoEncontrada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E:\\db_lucene\\.
         /// </summary>
         internal static string IndexPath {
             get {

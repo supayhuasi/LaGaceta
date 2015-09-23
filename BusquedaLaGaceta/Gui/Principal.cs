@@ -38,27 +38,31 @@ namespace BusquedaLaGaceta
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            SearchThread(txtBuscar.Text);            
+        }
+        private bool SearchThread(string text)
+        {
             treeView1.Nodes.Clear();
-            int i=0;
+            int i = 0;
             List<SearchResult> resultados;
-            if(!chkDiario.Checked)
-            resultados = luceneService.Search(txtBuscar.Text,fechaDesde.Value,fechaHasta.Value,true);
+            if (!chkDiario.Checked)
+                resultados = luceneService.Search(text, fechaDesde.Value, fechaHasta.Value, true);
             else
-                resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaDesde.Value, true);
+                resultados = luceneService.Search(text, fechaDesde.Value, fechaDesde.Value, true);
             lresultado.Text = resultados.Count.ToString();
             foreach (var resultado in resultados)
             {
-                if(i==0)
-                setImage(rollos.FilePath(resultado.Name));
-                    //
-                    // Another node following the first node.
-                    //
-                    TreeNode treeNode = new TreeNode(rollos.nombreArchivoPagina(resultado.Name));
-                    treeView1.Nodes.Add(treeNode);
-                    i++;
+                if (i == 0)
+                    setImage(rollos.FilePath(resultado.Name));
+                //
+                // Another node following the first node.
+                //
+                TreeNode treeNode = new TreeNode(rollos.nombreArchivoPagina(resultado.Name));
+                treeView1.Nodes.Add(treeNode);
+                i++;
             }
+            return true;
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -67,6 +71,7 @@ namespace BusquedaLaGaceta
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            this.reportViewer1.RefreshReport();
         }        
 
         public bool setImage(string path)
@@ -82,8 +87,8 @@ namespace BusquedaLaGaceta
             }
             catch (Exception ex)
             {
-                pictureBox1.Image = Image.FromFile("E:\\ARCHIVOS INDEXING\\noencontrada.png");
-                imagenSeleccionada =  Image.FromFile("E:\\ARCHIVOS INDEXING\\noencontrada.png");
+                pictureBox1.Image = Image.FromFile(Properties.Resources.ImagenNoEncontrada);
+                imagenSeleccionada = Image.FromFile(Properties.Resources.ImagenNoEncontrada);
                 return false;
             }
         }
@@ -230,7 +235,7 @@ namespace BusquedaLaGaceta
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             
-            pictureBox1.Image.Save("O:\\Archivos Indexing\\Imagenes Cortadas\\" + NameImagen + ".jpg", ImageFormat.Jpeg);
+            pictureBox1.Image.Save(Properties.Resources.ImagenesCortadas + NameImagen + ".jpg", ImageFormat.Jpeg);
         }
     }
 }

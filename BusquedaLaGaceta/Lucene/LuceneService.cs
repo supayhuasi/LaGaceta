@@ -31,7 +31,7 @@ namespace SimpleLuceneSearch
 		private IndexFunctions IndexFunctions { get; set; }
 		System.Resources.ResourceManager RM = new System.Resources.ResourceManager("Resources", System.Reflection.Assembly.GetExecutingAssembly());        
 		//Lucene.Net.Index.ind indexFunctions;
-		private string indexPath = @"E:\Trabajo\Aplika\La Gaceta\db_lucene\R340-06-02-1970-20-03-1970";
+		//private string indexPath = @"O:\Trabajo\Aplika\La Gaceta\db_lucene\R340-06-02-1970-20-03-1970";
 
 		public LuceneService()
 		{
@@ -75,7 +75,7 @@ namespace SimpleLuceneSearch
 			foreach (var path in paths)
 			{
 				
-				string pathAplicacion = "E:\\db_lucene\\";
+				string pathAplicacion = BusquedaLaGaceta.Properties.Resources.IndexPath;
 				var indexPath = pathAplicacion + path.DB_Path.Replace("O:\\db_lucene\\", "");
 				
 				

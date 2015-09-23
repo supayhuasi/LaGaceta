@@ -28,7 +28,7 @@ namespace BusquedaLaGaceta.Utils
             var resultado =
                 db.Table_File_Names.Where(x => x.File_Name==fileName).FirstOrDefault();
             if (resultado != null)
-                return resultado.Directory.Replace("O:\\", "E:\\").TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+                return resultado.Directory.Replace("O:\\", Properties.Resources.DiscoImagenes).TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
             else
                 return "imagen vacia";
         }
@@ -44,7 +44,7 @@ namespace BusquedaLaGaceta.Utils
         {                        
             var resultado =
                 db.Table_File_Names.Where(x => x.File_Rename == fileName).FirstOrDefault();
-            return resultado.Directory.Replace("O:\\", "E:\\").TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+            return resultado.Directory.Replace("O:\\", "O:\\").TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
         }
     }
 }
