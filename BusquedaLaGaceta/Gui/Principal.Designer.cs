@@ -62,7 +62,6 @@
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -377,14 +376,8 @@
             this.progressBar1.Location = new System.Drawing.Point(16, 645);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(171, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 19;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
-            this.reportViewer1.TabIndex = 20;
             // 
             // Form1
             // 
@@ -392,7 +385,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1136, 667);
-            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCortar);
@@ -458,7 +450,6 @@
         private System.Windows.Forms.Button btnCortar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }
 

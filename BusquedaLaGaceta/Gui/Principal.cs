@@ -11,6 +11,7 @@ using SimpleLuceneSearch;
 using BusquedaLaGaceta.Utils;
 using BusquedaLaGaceta.Gui;
 using System.Drawing.Imaging;
+using System.Threading;
 
 namespace BusquedaLaGaceta
 {
@@ -22,6 +23,12 @@ namespace BusquedaLaGaceta
         private ImageUtils funcionesImagenes;
         private string NameImagen;
         private string rolloImagen;
+        private Thread Busqueda = null;
+        private string lbResultado;
+        private TreeNode tree;
+
+
+        public delegate void UpdateUI();
         public Form1()
         {
             luceneService= new LuceneService();
@@ -38,18 +45,23 @@ namespace BusquedaLaGaceta
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            SearchThread(txtBuscar.Text);            
+            Busqueda= new Thread(new ThreadStart(SearchThread));
+
+            //Busqueda.IsBackground();
+            Busqueda.Start();
+            Thread.Sleep(500);
         }
-        private bool SearchThread(string text)
-        {
-            treeView1.Nodes.Clear();
+        private void SearchThread()
+        {            
+            treeView1.Invoke(new UpdateUI(limpiezaTree));
             int i = 0;
             List<SearchResult> resultados;
             if (!chkDiario.Checked)
-                resultados = luceneService.Search(text, fechaDesde.Value, fechaHasta.Value, true);
+                resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaHasta.Value, true);
             else
-                resultados = luceneService.Search(text, fechaDesde.Value, fechaDesde.Value, true);
-            lresultado.Text = resultados.Count.ToString();
+                resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaDesde.Value, true);
+            lbResultado = resultados.Count.ToString();
+            lresultado.Invoke(new UpdateUI(updatelresultado));
             foreach (var resultado in resultados)
             {
                 if (i == 0)
@@ -57,12 +69,25 @@ namespace BusquedaLaGaceta
                 //
                 // Another node following the first node.
                 //
-                TreeNode treeNode = new TreeNode(rollos.nombreArchivoPagina(resultado.Name));
-                treeView1.Nodes.Add(treeNode);
+                tree = new TreeNode(rollos.nombreArchivoPagina(resultado.Name));
+                treeView1.Invoke(new UpdateUI(updateTreeView));
+              //  setNodo(resultado.Name);
                 i++;
-            }
-            return true;
+            }            
         }
+        public void limpiezaTree()
+        {
+            treeView1.Nodes.Clear();
+        }
+        public void updatelresultado()
+        {
+            lresultado.Text= lbResultado;
+        }
+        public void updateTreeView()
+        {
+            treeView1.Nodes.Add(tree);
+        }
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -70,8 +95,7 @@ namespace BusquedaLaGaceta
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            this.reportViewer1.RefreshReport();
+            
         }        
 
         public bool setImage(string path)
@@ -80,8 +104,8 @@ namespace BusquedaLaGaceta
             {
                 pictureBox1.Image = Image.FromFile(path);
                 imagenSeleccionada = Image.FromFile(path);
-                pictureBox1.Width = pictureBox1.Image.Width;
-                pictureBox1.Height = pictureBox1.Image.Height;                
+                //pictureBox1.Width = pictureBox1.Image.Width;
+                //pictureBox1.Height = pictureBox1.Image.Height;                
                 return true;
 
             }
