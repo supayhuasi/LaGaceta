@@ -26,7 +26,7 @@ namespace BusquedaLaGaceta
         private Thread Busqueda = null;
         private string lbResultado;
         private TreeNode tree;
-
+        //private int cantResultado { get; set; }
 
         public delegate void UpdateUI();
         public Form1()
@@ -36,6 +36,12 @@ namespace BusquedaLaGaceta
             funcionesImagenes = new ImageUtils();
             InitializeComponent();
             panel1.Controls.Add(pictureBox1);
+            progressBar1.Value = 1;
+            progressBar1.Maximum = 20;
+            progressBar1.Minimum = 1;
+            fechaDesde.MinDate = new DateTime(int.Parse(Properties.Resources.AnioInicio),int.Parse(Properties.Resources.MesInicio),int.Parse(Properties.Resources.DiaInicio));
+            fechaDesde.Value = new DateTime(int.Parse(Properties.Resources.AnioInicio), int.Parse(Properties.Resources.MesInicio), int.Parse(Properties.Resources.DiaInicio));
+            fechaHasta.Value = new DateTime(int.Parse(Properties.Resources.AnioFin), int.Parse(Properties.Resources.MesFin), int.Parse(Properties.Resources.DiaFin));
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,11 +51,17 @@ namespace BusquedaLaGaceta
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            deshabilitarBotonesImagenes();
+            progressBar1.Value = 1;
+            progressBar1.Maximum = 20;
+            progressBar1.Minimum = 1;
+            btnBuscar.Enabled = false;
             Busqueda= new Thread(new ThreadStart(SearchThread));
 
-            //Busqueda.IsBackground();
+            Busqueda.IsBackground= true;
             Busqueda.Start();
             Thread.Sleep(500);
+            
         }
         private void SearchThread()
         {            
@@ -62,18 +74,39 @@ namespace BusquedaLaGaceta
                 resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaDesde.Value, true);
             lbResultado = resultados.Count.ToString();
             lresultado.Invoke(new UpdateUI(updatelresultado));
+
+            progressBar1.Invoke(new UpdateUI(setProgressBarMaximo));
             foreach (var resultado in resultados)
             {
                 if (i == 0)
-                    setImage(rollos.FilePath(resultado.Name));
+                    setImage(resultado.Name);
                 //
                 // Another node following the first node.
                 //
+                progressBar1.Invoke(new UpdateUI(setProgressBarBusqueda));
                 tree = new TreeNode(rollos.nombreArchivoPagina(resultado.Name));
                 treeView1.Invoke(new UpdateUI(updateTreeView));
               //  setNodo(resultado.Name);
                 i++;
-            }            
+            }
+            btnBuscar.Invoke(new UpdateUI(habiliarBuscar));
+            btnPantalla.Invoke(new UpdateUI(habilitarBotonesImagenes));
+        }
+        public void habiliarBuscar()
+        {
+            btnBuscar.Enabled = true;
+        }
+        public void setProgressBarMaximo()
+        {
+            progressBar1.Maximum = int.Parse(lbResultado)+1;
+            progressBar1.Value = 1;            
+            progressBar1.Minimum = 1;
+
+        }
+        public void setProgressBarBusqueda()
+        {
+            progressBar1.Value += 1;
+
         }
         public void limpiezaTree()
         {
@@ -95,6 +128,9 @@ namespace BusquedaLaGaceta
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            progressBar1.Value = 1;
+            progressBar1.Maximum = 20;
+            progressBar1.Minimum = 1;
             
         }        
 
@@ -102,10 +138,11 @@ namespace BusquedaLaGaceta
         {
             try
             {
+                NameImagen = path;
+                path = rollos.FilePath(path);
                 pictureBox1.Image = Image.FromFile(path);
                 imagenSeleccionada = Image.FromFile(path);
-                //pictureBox1.Width = pictureBox1.Image.Width;
-                //pictureBox1.Height = pictureBox1.Image.Height;                
+                
                 return true;
 
             }
@@ -209,6 +246,7 @@ namespace BusquedaLaGaceta
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
+            try { 
             xUp = e.X;
             yUp = e.Y;
 
@@ -227,7 +265,11 @@ namespace BusquedaLaGaceta
             yUp = yUp * pictureBox1.Image.Height / pictureBox1.Height;
 
             rectCropArea = new Rectangle(xDown, yDown, Math.Abs(xUp - xDown), Math.Abs(yUp - yDown));
-    
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
 
 
@@ -254,12 +296,68 @@ namespace BusquedaLaGaceta
 
             imagenSeleccionada = ImageUtils.recortarImagen(pictureBox1.Image, rectCropArea);
             pictureBox1.Image = imagenSeleccionada;
+            btnGuardar.Enabled = true;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog folderBrowserDialog1folder = new FolderBrowserDialog();
+            if (folderBrowserDialog1folder.ShowDialog() == DialogResult.OK)
+            {                
+                pictureBox1.Image.Save(folderBrowserDialog1folder.SelectedPath + NameImagen + ".jpg", ImageFormat.Jpeg);
+                
+            }
             
-            pictureBox1.Image.Save(Properties.Resources.ImagenesCortadas + NameImagen + ".jpg", ImageFormat.Jpeg);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if(Busqueda!=null)
+            Busqueda.Abort();
+            progressBar1.Value = 1;
+            progressBar1.Maximum = 20;
+            progressBar1.Minimum = 1;
+            limpiezaTree();
+            Busqueda = null;
+            btnBuscar.Enabled = true;
+            luceneService = new LuceneService();
+            rollos = new ManejoRollos();
+            funcionesImagenes = new ImageUtils();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            if(pictureBox1.Width > 1500)
+            { 
+            var ancho = pictureBox1.Width / 6;
+            var alto =  pictureBox1.Height / 6;
+
+            pictureBox1.Image = ImageUtils.ScaleImage(pictureBox1.Image, ancho, alto);
+            pictureBox1.Width = pictureBox1.Image.Width;
+            pictureBox1.Height = pictureBox1.Image.Height;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void habilitarBotonesImagenes()
+        {
+            btnCortar.Enabled = true;            
+            btnMaximizar.Enabled = true;
+            btnMinizar.Enabled = true;
+            btnOriginal.Enabled = true;
+            btnPantalla.Enabled = true;
+        }
+        private void deshabilitarBotonesImagenes()
+        {
+            btnCortar.Enabled = false;
+            btnMaximizar.Enabled = false;
+            btnMinizar.Enabled = false;
+            btnOriginal.Enabled = false;
+            btnPantalla.Enabled = false;
         }
     }
 }
+

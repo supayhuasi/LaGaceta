@@ -28,6 +28,8 @@ namespace BusquedaLaGaceta
                 Form1 settingsForm = new Form1();
                 settingsForm.Show();                
             }
+            else
+                MessageBox.Show("Usuario o clave incorrecta.");
         }
 
         private void button3_Click(object sender, EventArgs e)

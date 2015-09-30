@@ -53,12 +53,10 @@
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnPantalla = new System.Windows.Forms.Button();
+            this.btnOriginal = new System.Windows.Forms.Button();
             this.btnMinizar = new System.Windows.Forms.Button();
             this.btnMaximizar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -99,12 +97,13 @@
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(16, 234);
+            this.btnImprimir.Location = new System.Drawing.Point(16, 250);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(159, 23);
             this.btnImprimir.TabIndex = 11;
-            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Text = "Cancelar Busqueda";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // lresultado
             // 
@@ -289,26 +288,31 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // button6
+            // btnPantalla
             // 
-            this.button6.Location = new System.Drawing.Point(112, 615);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "Pantalla";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnPantalla.Enabled = false;
+            this.btnPantalla.Location = new System.Drawing.Point(112, 615);
+            this.btnPantalla.Name = "btnPantalla";
+            this.btnPantalla.Size = new System.Drawing.Size(75, 23);
+            this.btnPantalla.TabIndex = 14;
+            this.btnPantalla.Text = "Pantalla";
+            this.btnPantalla.UseVisualStyleBackColor = true;
+            this.btnPantalla.Click += new System.EventHandler(this.button6_Click_1);
             // 
-            // button4
+            // btnOriginal
             // 
-            this.button4.Location = new System.Drawing.Point(112, 585);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Original";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnOriginal.Enabled = false;
+            this.btnOriginal.Location = new System.Drawing.Point(112, 585);
+            this.btnOriginal.Name = "btnOriginal";
+            this.btnOriginal.Size = new System.Drawing.Size(75, 23);
+            this.btnOriginal.TabIndex = 13;
+            this.btnOriginal.Text = "Original";
+            this.btnOriginal.UseVisualStyleBackColor = true;
+            this.btnOriginal.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnMinizar
             // 
+            this.btnMinizar.Enabled = false;
             this.btnMinizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinizar.Image")));
             this.btnMinizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMinizar.Location = new System.Drawing.Point(112, 556);
@@ -322,6 +326,7 @@
             // 
             // btnMaximizar
             // 
+            this.btnMaximizar.Enabled = false;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
             this.btnMaximizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMaximizar.Location = new System.Drawing.Point(112, 527);
@@ -333,26 +338,9 @@
             this.btnMaximizar.UseVisualStyleBackColor = true;
             this.btnMaximizar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(13, 527);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 556);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Minimizar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // btnCortar
             // 
+            this.btnCortar.Enabled = false;
             this.btnCortar.Location = new System.Drawing.Point(12, 585);
             this.btnCortar.Name = "btnCortar";
             this.btnCortar.Size = new System.Drawing.Size(75, 23);
@@ -363,6 +351,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Enabled = false;
             this.btnGuardar.Location = new System.Drawing.Point(13, 614);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
@@ -374,10 +363,12 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(16, 645);
+            this.progressBar1.Maximum = 20;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(171, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 19;
+            this.progressBar1.Value = 1;
             // 
             // Form1
             // 
@@ -388,10 +379,8 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCortar);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnPantalla);
+            this.Controls.Add(this.btnOriginal);
             this.Controls.Add(this.btnMinizar);
             this.Controls.Add(this.btnMaximizar);
             this.Controls.Add(this.panel2);
@@ -441,12 +430,10 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.Button btnImprimir;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnPantalla;
+        private System.Windows.Forms.Button btnOriginal;
         private System.Windows.Forms.Button btnMinizar;
         private System.Windows.Forms.Button btnMaximizar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCortar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ProgressBar progressBar1;

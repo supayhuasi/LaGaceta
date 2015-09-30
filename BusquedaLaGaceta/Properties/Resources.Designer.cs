@@ -71,6 +71,42 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 2003.
+        /// </summary>
+        internal static string AnioFin {
+            get {
+                return ResourceManager.GetString("AnioFin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1912.
+        /// </summary>
+        internal static string AnioInicio {
+            get {
+                return ResourceManager.GetString("AnioInicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 26.
+        /// </summary>
+        internal static string DiaFin {
+            get {
+                return ResourceManager.GetString("DiaFin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 04.
+        /// </summary>
+        internal static string DiaInicio {
+            get {
+                return ResourceManager.GetString("DiaInicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E:\\.
         /// </summary>
         internal static string DiscoImagenes {
@@ -89,7 +125,7 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O:\\Archivos Indexing\\Imagenes Cortadas\\.
+        ///   Looks up a localized string similar to E:\\Archivos Indexing\\Imagenes Cortadas\\.
         /// </summary>
         internal static string ImagenesCortadas {
             get {
@@ -112,6 +148,24 @@ namespace BusquedaLaGaceta.Properties {
         internal static string IndexPath {
             get {
                 return ResourceManager.GetString("IndexPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 01.
+        /// </summary>
+        internal static string MesFin {
+            get {
+                return ResourceManager.GetString("MesFin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 08.
+        /// </summary>
+        internal static string MesInicio {
+            get {
+                return ResourceManager.GetString("MesInicio", resourceCulture);
             }
         }
         

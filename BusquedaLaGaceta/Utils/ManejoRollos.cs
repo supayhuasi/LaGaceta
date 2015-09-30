@@ -44,7 +44,7 @@ namespace BusquedaLaGaceta.Utils
         {                        
             var resultado =
                 db.Table_File_Names.Where(x => x.File_Rename == fileName).FirstOrDefault();
-            return resultado.Directory.Replace("O:\\", "O:\\").TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+            return resultado.Directory.Replace("O:\\", Properties.Resources.DiscoImagenes).TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
         }
     }
 }

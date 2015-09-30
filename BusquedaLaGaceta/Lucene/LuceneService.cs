@@ -62,7 +62,7 @@ namespace SimpleLuceneSearch
 			writer.Optimize();
 			//writer.Flush();
 			//writer.Close();
-			luceneIndexDirectory.Close();
+			luceneIndexDirectory.Dispose();
 		}
 
 		public List<SearchResult> Search(string searchTerm, DateTime fechaDesde, DateTime fechaHasta, bool bDiario)
