@@ -82,9 +82,11 @@ namespace SimpleLuceneSearch
 		luceneIndexDirectory = FSDirectory.Open(indexPath);
 
 		Searcher searcher = new IndexSearcher(luceneIndexDirectory);
-		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_24);
+		//Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_24);
+				//SpanishStemFilter
 		//QueryParser queryParser = new QueryParser(DocumentFunctions.CONTENT, new StandardAnalyzer());
-		QueryParser queryParser = new QueryParser(Version.LUCENE_24, DocumentFunctions.CONTENT, analyzer);
+		SpanishAnalyzer analyzer = new SpanishAnalyzer();
+				QueryParser queryParser = new QueryParser(Version.LUCENE_24, DocumentFunctions.CONTENT, analyzer);
 		Query query = queryParser.Parse(searchTerm);
 			var a = searcher.Search(query,20).ScoreDocs;            
 			for (int i=0;i < a.Length ;i++)
@@ -92,8 +94,15 @@ namespace SimpleLuceneSearch
 				var document = searcher.Doc(a[i].Doc);
 				SearchResult searchResult = new SearchResult();
 				searchResult.Name = document.GetField(DocumentFunctions.NAME).StringValue;
-				searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);                
-				result.Add(searchResult);
+				searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);
+				var listImagenes = searchResult.Path.Substring(21).Split('\\');
+                searchResult.RollNumber = listImagenes[1];
+                var ima= result.Find(x=>x.Name.Equals(searchResult.Name));
+                
+                if (ima == null)
+                    result.Add(searchResult);
+                //else
+                //    ima = ;
 			}
 			}
 			return result;

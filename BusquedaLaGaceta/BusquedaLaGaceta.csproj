@@ -243,6 +243,7 @@
     <Compile Include="Utils\ManejoRollos.cs" />
     <Compile Include="Utils\MultiLanguageAnalyzer.cs" />
     <Compile Include="Utils\SearchResult.cs" />
+    <Compile Include="Utils\SpanishAnalyzer.cs" />
     <Compile Include="Utils\SpanishStemFilter.cs" />
     <Compile Include="Utils\ManejoUsuarios.cs" />
     <EmbeddedResource Include="Gui\NameArchivo.resx">

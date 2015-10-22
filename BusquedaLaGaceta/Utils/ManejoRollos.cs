@@ -18,7 +18,7 @@ namespace BusquedaLaGaceta.Utils
         public IQueryable<Table_LuceneDBIndexAddress> DbPath(DateTime fechaDesde,DateTime fechaHasta)
         {
             var resultado =
-                db.Table_LuceneDBIndexAddress.Where(x => x.Date_From >= fechaDesde && x.Date_To <= fechaHasta);
+                db.Table_LuceneDBIndexAddress.Where(x => x.Date_From >= fechaDesde && x.Date_To <= fechaHasta );
             return resultado;            
         }
         public string FilePath(string fileName)
@@ -36,9 +36,14 @@ namespace BusquedaLaGaceta.Utils
         {
             var nombreArchivo = fileName.IndexOf("scan");
             fileName = fileName.Remove(0, nombreArchivo);
-            var resultado =
-                db.Table_File_Names.Where(x => x.File_Name == fileName).FirstOrDefault();
-            return resultado.File_Rename.TrimEnd();
+            try
+            {
+                var resultado =
+                    db.Table_File_Names.Where(x => x.File_Name == fileName).FirstOrDefault();
+                return resultado.File_Rename.TrimEnd();
+            }
+            catch (Exception ex)
+            { return ""; }
         }
         public string FileRenamePath(string fileName)
         {                        

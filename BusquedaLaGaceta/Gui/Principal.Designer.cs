@@ -32,14 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.grp1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFechaHasta = new System.Windows.Forms.TextBox();
+            this.txtFechaDesde = new System.Windows.Forms.TextBox();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lresultado = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblPalabrasBuscar = new System.Windows.Forms.Label();
-            this.fechaHasta = new System.Windows.Forms.DateTimePicker();
-            this.fechaDesde = new System.Windows.Forms.DateTimePicker();
             this.chkRango = new System.Windows.Forms.CheckBox();
             this.chkDiario = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -77,14 +79,16 @@
             // 
             // grp1
             // 
+            this.grp1.Controls.Add(this.label2);
+            this.grp1.Controls.Add(this.label1);
+            this.grp1.Controls.Add(this.txtFechaHasta);
+            this.grp1.Controls.Add(this.txtFechaDesde);
             this.grp1.Controls.Add(this.btnImprimir);
             this.grp1.Controls.Add(this.lresultado);
             this.grp1.Controls.Add(this.btnLimpiar);
             this.grp1.Controls.Add(this.btnBuscar);
             this.grp1.Controls.Add(this.txtBuscar);
             this.grp1.Controls.Add(this.lblPalabrasBuscar);
-            this.grp1.Controls.Add(this.fechaHasta);
-            this.grp1.Controls.Add(this.fechaDesde);
             this.grp1.Controls.Add(this.chkRango);
             this.grp1.Controls.Add(this.chkDiario);
             this.grp1.Controls.Add(this.radioButton1);
@@ -94,6 +98,38 @@
             this.grp1.TabIndex = 1;
             this.grp1.TabStop = false;
             this.grp1.Text = "Busqueda por Fecha";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Fecha Hasta";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Fecha Desde:";
+            // 
+            // txtFechaHasta
+            // 
+            this.txtFechaHasta.Location = new System.Drawing.Point(16, 121);
+            this.txtFechaHasta.Name = "txtFechaHasta";
+            this.txtFechaHasta.Size = new System.Drawing.Size(150, 20);
+            this.txtFechaHasta.TabIndex = 13;
+            // 
+            // txtFechaDesde
+            // 
+            this.txtFechaDesde.Location = new System.Drawing.Point(16, 80);
+            this.txtFechaDesde.Name = "txtFechaDesde";
+            this.txtFechaDesde.Size = new System.Drawing.Size(150, 20);
+            this.txtFechaDesde.TabIndex = 12;
             // 
             // btnImprimir
             // 
@@ -153,23 +189,6 @@
             this.lblPalabrasBuscar.Text = "Palabras a buscar";
             this.lblPalabrasBuscar.Click += new System.EventHandler(this.label1_Click);
             // 
-            // fechaHasta
-            // 
-            this.fechaHasta.Location = new System.Drawing.Point(13, 107);
-            this.fechaHasta.Name = "fechaHasta";
-            this.fechaHasta.Size = new System.Drawing.Size(153, 20);
-            this.fechaHasta.TabIndex = 4;
-            this.fechaHasta.Value = new System.DateTime(1970, 7, 30, 0, 0, 0, 0);
-            // 
-            // fechaDesde
-            // 
-            this.fechaDesde.Location = new System.Drawing.Point(13, 81);
-            this.fechaDesde.MinDate = new System.DateTime(1912, 8, 4, 0, 0, 0, 0);
-            this.fechaDesde.Name = "fechaDesde";
-            this.fechaDesde.Size = new System.Drawing.Size(153, 20);
-            this.fechaDesde.TabIndex = 3;
-            this.fechaDesde.Value = new System.DateTime(1970, 2, 6, 0, 0, 0, 0);
-            // 
             // chkRango
             // 
             this.chkRango.AutoSize = true;
@@ -223,7 +242,6 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(174, 138);
             this.treeView1.TabIndex = 3;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // panel1
             // 
@@ -414,8 +432,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblPalabrasBuscar;
-        private System.Windows.Forms.DateTimePicker fechaHasta;
-        private System.Windows.Forms.DateTimePicker fechaDesde;
         private System.Windows.Forms.CheckBox chkRango;
         private System.Windows.Forms.CheckBox chkDiario;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -437,6 +453,10 @@
         private System.Windows.Forms.Button btnCortar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFechaHasta;
+        private System.Windows.Forms.TextBox txtFechaDesde;
     }
 }
 

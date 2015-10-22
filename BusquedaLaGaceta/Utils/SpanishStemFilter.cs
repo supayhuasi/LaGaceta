@@ -8,54 +8,47 @@ using SF.Snowball.Ext;
 
 namespace BusquedaLaGaceta.Utils
 {
-    class SpanishStemFilter : TokenFilter
+    public class SpanishStemFilter : TokenFilter { 
+     
+    private SpanishStemmer stemmer; 
+    private Token token = null; 
+     
+    public SpanishStemFilter(TokenStream inTokenStream) : base (inTokenStream) {     	
+        
+        stemmer = new SpanishStemmer(); 
+    } 
+     
+    /** Returns the next input Token, after being stemmed */ 
+    //public Token next() { 
+        
+    //    if ((token = Input) == null) { 
+    //        return null; 
+    //    } 
+    //    else { 
+    //        stemmer.SetCurrent(token.); 
+    //        stemmer.Stem(); 
+    //        String s = stemmer.GetCurrent();
+    //        if ( !s.Equals(token.Term())) { 
+    //            return new Token( s, token.startOffset(), 
+    //            token.endOffset(), token.type() ); 
+    //        } 
+    //        return token; 
+    //    } 
+    //} 
+     
+    /** 
+     * Set a alternative/custom Stemmer for this filter. 
+     */ 
+    public void setStemmer(SpanishStemmer stemmer) { 
+        if ( stemmer != null ) { 
+            this.stemmer = stemmer; 
+        } 
+    }
+
+    public override bool IncrementToken()
     {
-        private SpanishStemmer stemmer;
-	    private Token token = null;
-
-	/**
-	 * Constructor
-	 * 
-	 * @param in el <code>TokenStream</code> que se desea procesar
-	 */
-    //public SpanishStemFilter()
-    //{	   
-    //    //base(tokenStream)
-    //    //;
-    //    stemmer = new SpanishStemmer();
-    //}
-		
-	public Token next() 
-	{
-        //if ((token = input.next()) == null) 
-        //{
-        //    return null;
-        //}
-        //else 
-        //{
-	    stemmer.SetCurrent(token.Term);
-			stemmer.Stem();
-	        string s = stemmer.GetCurrent();
-			if ( !s.Equals(token.Term)) 
-			{
-				return new Token(s, token.StartOffset, token.EndOffset, token.Type);
-			}
-			return token;
-	//	}
-	}
-	
-	/**
-	* Set a alternative/custom Stemmer for this filter.
-	*/
-
-        public SpanishStemFilter(TokenStream input) : base(input)
-        {
-            stemmer = new SpanishStemmer();
-        }
-
-        public override bool IncrementToken()
-        {
-            throw new NotImplementedException();
-        }
+        if (!input.IncrementToken()) return false;
+        return true;
+    }
     }
 }

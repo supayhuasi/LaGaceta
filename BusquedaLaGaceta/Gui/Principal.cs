@@ -17,17 +17,17 @@ namespace BusquedaLaGaceta
 {
     public partial class Form1 : Form
     {
-        private LuceneService luceneService;
-        private ManejoRollos rollos;
-        private Image imagenSeleccionada;
-        private ImageUtils funcionesImagenes;
-        private string NameImagen;
-        private string rolloImagen;
+        private LuceneService luceneService { get; set; }
+        private ManejoRollos rollos { get; set; }
+        private Image imagenSeleccionada { get; set; }
+        private ImageUtils funcionesImagenes { get; set; }
+        private string NameImagen { get; set; }
+        private string rolloImagen { get; set; }
         private Thread Busqueda = null;
-        private string lbResultado;
-        private TreeNode tree;
-        //private int cantResultado { get; set; }
-
+        private string lbResultadoc { get; set; }
+        private string tree { get; set; }
+        //private TreeNode treePadree { get; set; }
+        private string treePadreValor { get; set; }
         public delegate void UpdateUI();
         public Form1()
         {
@@ -39,9 +39,9 @@ namespace BusquedaLaGaceta
             progressBar1.Value = 1;
             progressBar1.Maximum = 20;
             progressBar1.Minimum = 1;
-            fechaDesde.MinDate = new DateTime(int.Parse(Properties.Resources.AnioInicio),int.Parse(Properties.Resources.MesInicio),int.Parse(Properties.Resources.DiaInicio));
-            fechaDesde.Value = new DateTime(int.Parse(Properties.Resources.AnioInicio), int.Parse(Properties.Resources.MesInicio), int.Parse(Properties.Resources.DiaInicio));
-            fechaHasta.Value = new DateTime(int.Parse(Properties.Resources.AnioFin), int.Parse(Properties.Resources.MesFin), int.Parse(Properties.Resources.DiaFin));
+            //fechaDesde.MinDate = new DateTime(int.Parse(Properties.Resources.AnioInicio),int.Parse(Properties.Resources.MesInicio),int.Parse(Properties.Resources.DiaInicio));
+            //fechaDesde.Value = new DateTime(int.Parse(Properties.Resources.AnioInicio), int.Parse(Properties.Resources.MesInicio), int.Parse(Properties.Resources.DiaInicio));
+            //fechaHasta.Value = new DateTime(int.Parse(Properties.Resources.AnioFin), int.Parse(Properties.Resources.MesFin), int.Parse(Properties.Resources.DiaFin));
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -67,16 +67,22 @@ namespace BusquedaLaGaceta
         {            
             treeView1.Invoke(new UpdateUI(limpiezaTree));
             int i = 0;
+            string aux="";
+            var fechaCortadas = txtFechaDesde.Text.Split('/');
+            DateTime fechaDesde = new DateTime(int.Parse(fechaCortadas[2]), int.Parse(fechaCortadas[1]), int.Parse(fechaCortadas[0]));
+            fechaCortadas = txtFechaHasta.Text.Split('/');
+            DateTime fechaHasta = new DateTime(int.Parse(fechaCortadas[2]), int.Parse(fechaCortadas[1]), int.Parse(fechaCortadas[0]));
             List<SearchResult> resultados;
             if (!chkDiario.Checked)
-                resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaHasta.Value, true);
+                resultados = luceneService.Search(txtBuscar.Text, fechaDesde, fechaHasta, true);
             else
-                resultados = luceneService.Search(txtBuscar.Text, fechaDesde.Value, fechaDesde.Value, true);
+                resultados = luceneService.Search(txtBuscar.Text, fechaDesde, fechaDesde, true);
             lbResultado = resultados.Count.ToString();
             lresultado.Invoke(new UpdateUI(updatelresultado));
-
+            var listResultados = resultados.OrderBy(x=>x.Path);
+            
             progressBar1.Invoke(new UpdateUI(setProgressBarMaximo));
-            foreach (var resultado in resultados)
+            foreach (var resultado in listResultados)
             {
                 if (i == 0)
                     setImage(resultado.Name);
@@ -84,8 +90,21 @@ namespace BusquedaLaGaceta
                 // Another node following the first node.
                 //
                 progressBar1.Invoke(new UpdateUI(setProgressBarBusqueda));
-                tree = new TreeNode(rollos.nombreArchivoPagina(resultado.Name));
-                treeView1.Invoke(new UpdateUI(updateTreeView));
+                if (!aux.Equals(resultado.RollNumber))
+                {
+                    aux = resultado.RollNumber;                    
+                    treePadreValor = resultado.RollNumber;
+                    tree = rollos.nombreArchivoPagina(resultado.Name);
+                    treeView1.Invoke(new UpdateUI(updateTreeView));    
+                }
+                else
+                {
+                    treePadreValor = resultado.RollNumber;
+                    tree = rollos.nombreArchivoPagina(resultado.Name);
+                    treeView1.Invoke(new UpdateUI(addTreePadre));
+                    aux = treePadreValor;
+                }
+                //treeView1.Invoke(new UpdateUI(updateTreeView));
               //  setNodo(resultado.Name);
                 i++;
             }
@@ -118,9 +137,18 @@ namespace BusquedaLaGaceta
         }
         public void updateTreeView()
         {
-            treeView1.Nodes.Add(tree);
+            TreeNode aux = new TreeNode(tree);
+            treeView1.Nodes.Add(treePadreValor,treePadreValor);
+            int indice = treeView1.Nodes.IndexOfKey(treePadreValor);
+            treeView1.Nodes[treePadreValor].Nodes.Add(aux);
+//            treeView1.Nodes.Insert(indice, tree);
         }
-        
+        public void addTreePadre()
+        {
+            int indice = treeView1.Nodes.IndexOfKey(treePadreValor);
+            //treeView1.Nodes.Insert(indice, tree);
+            treeView1.Nodes[treePadreValor].Nodes.Add(new TreeNode(tree));
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -203,12 +231,12 @@ namespace BusquedaLaGaceta
         {
             if (chkDiario.Checked == true)
             {
-                fechaHasta.Enabled = false;
+                txtFechaHasta.Enabled = false;
                 chkRango.Checked = false;
             }
             else
             {
-                fechaHasta.Enabled = true;
+                txtFechaHasta.Enabled = true;
                 chkRango.Checked = true;
             }
         }
@@ -217,12 +245,12 @@ namespace BusquedaLaGaceta
         {
             if (chkRango.Checked == true)
             {
-                fechaHasta.Enabled = true;
+                txtFechaHasta.Enabled = true;
                 chkDiario.Checked = false;
             }
             else
             {
-                fechaHasta.Enabled = false;
+                txtFechaHasta.Enabled = false;
                 chkDiario.Checked = true;
             }
         }
@@ -358,6 +386,8 @@ namespace BusquedaLaGaceta
             btnOriginal.Enabled = false;
             btnPantalla.Enabled = false;
         }
+
+        public string lbResultado { get; set; }
     }
 }
 
