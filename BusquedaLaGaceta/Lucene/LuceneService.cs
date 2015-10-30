@@ -24,14 +24,14 @@ namespace SimpleLuceneSearch
 	{
 		// Note there are many different types of Analyzer that may be used with Lucene, the exact one you use
 		// will depend on your requirements
-	   // private Analyzer analyzer = new WhitespaceAnalyzer(); 
+	    private Analyzer analyzer = new WhitespaceAnalyzer(); 
 		private ManejoRollos rollos { get; set; }
 		private Directory luceneIndexDirectory{ get; set; }
 		private IndexWriter writer{ get; set; }
 		private IndexFunctions IndexFunctions { get; set; }
 		System.Resources.ResourceManager RM = new System.Resources.ResourceManager("Resources", System.Reflection.Assembly.GetExecutingAssembly());        
 		//Lucene.Net.Index.ind indexFunctions;
-		//private string indexPath = @"O:\Trabajo\Aplika\La Gaceta\db_lucene\R340-06-02-1970-20-03-1970";
+        private string indexPath = @"E:\\db_lucene\\R555-16-12-1999-15-01-2000";
 
 		public LuceneService()
 		{
@@ -52,16 +52,19 @@ namespace SimpleLuceneSearch
 
 		public void BuildIndex(IEnumerable<SampleDataFileRow> dataToIndex)
 		{
-			foreach (var sampleDataFileRow in dataToIndex)
-			{
-				Document doc = new Document();
-				//doc.Add(new Field("LineNumber", sampleDataFileRow.LineNumber.ToString() , Field.Store.YES, Field.Index.UN_TOKENIZED));
-				//doc.Add(new Field("LineText", sampleDataFileRow.LineText, Field.Store.YES, Field.Index.TOKENIZED));
-				writer.AddDocument(doc);
-			}
-			writer.Optimize();
-			//writer.Flush();
-			//writer.Close();
+            luceneIndexDirectory = FSDirectory.Open(indexPath);
+            writer = new IndexWriter(luceneIndexDirectory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
+            foreach (var sampleDataFileRow in dataToIndex)
+            {
+                Document doc = new Document();
+                doc.Add(new Field(DocumentFunctions.NAME, sampleDataFileRow.NAME, Field.Store.YES, Field.Index.NOT_ANALYZED));
+                doc.Add(new Field(DocumentFunctions.CONTENT, sampleDataFileRow.CONTENT, Field.Store.YES, Field.Index.ANALYZED));
+                doc.Add(new Field(DocumentFunctions.PATH, sampleDataFileRow.PATH, Field.Store.YES, Field.Index.ANALYZED));
+                writer.AddDocument(doc);
+            }
+            writer.Optimize();
+            //writer.Flush()
+            writer.Dispose();
 			luceneIndexDirectory.Dispose();
 		}
 
@@ -76,7 +79,7 @@ namespace SimpleLuceneSearch
 			{
 				
 				string pathAplicacion = BusquedaLaGaceta.Properties.Resources.IndexPath;
-				var indexPath = pathAplicacion + path.DB_Path.Replace("O:\\db_lucene\\", "");
+				var indexPath = pathAplicacion + path.DB_Path.Replace("E:\\db_lucene\\", "");
 				
 				
 		luceneIndexDirectory = FSDirectory.Open(indexPath);
@@ -85,7 +88,7 @@ namespace SimpleLuceneSearch
 		//Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_24);
 				//SpanishStemFilter
 		//QueryParser queryParser = new QueryParser(DocumentFunctions.CONTENT, new StandardAnalyzer());
-		SpanishAnalyzer analyzer = new SpanishAnalyzer();
+		//SpanishAnalyzer analyzer = new SpanishAnalyzer();
 				QueryParser queryParser = new QueryParser(Version.LUCENE_24, DocumentFunctions.CONTENT, analyzer);
 		Query query = queryParser.Parse(searchTerm);
 			var a = searcher.Search(query,20).ScoreDocs;            
@@ -94,8 +97,10 @@ namespace SimpleLuceneSearch
 				var document = searcher.Doc(a[i].Doc);
 				SearchResult searchResult = new SearchResult();
 				searchResult.Name = document.GetField(DocumentFunctions.NAME).StringValue;
-				searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);
-				var listImagenes = searchResult.Path.Substring(21).Split('\\');
+				
+                //searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);
+                searchResult.Path = document.GetField(DocumentFunctions.PATH).StringValue;
+                var listImagenes = searchResult.Path.Substring(21).Split('\\');
                 searchResult.RollNumber = listImagenes[1];
                 var ima= result.Find(x=>x.Name.Equals(searchResult.Name));
                 

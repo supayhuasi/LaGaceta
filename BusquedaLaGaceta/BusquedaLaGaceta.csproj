@@ -120,6 +120,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Indexing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Indexing.Designer.cs">
+      <DependentUpon>Indexing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\NameArchivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,7 +169,6 @@
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Lucene\LuceneService.cs" />
-    <Compile Include="Lucene\SampleDataFileReader.cs" />
     <Compile Include="Lucene\SampleDataFileRow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,6 +251,9 @@
     <Compile Include="Utils\SpanishAnalyzer.cs" />
     <Compile Include="Utils\SpanishStemFilter.cs" />
     <Compile Include="Utils\ManejoUsuarios.cs" />
+    <EmbeddedResource Include="Gui\Indexing.resx">
+      <DependentUpon>Indexing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\NameArchivo.resx">
       <DependentUpon>NameArchivo.cs</DependentUpon>
     </EmbeddedResource>

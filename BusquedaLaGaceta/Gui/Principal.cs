@@ -388,6 +388,12 @@ namespace BusquedaLaGaceta
         }
 
         public string lbResultado { get; set; }
+
+        private void indexarTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Indexing usuarios = new Indexing();
+            usuarios.Show();  
+        }
     }
 }
 

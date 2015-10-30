@@ -62,6 +62,8 @@
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.indexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexarTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -264,7 +266,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
+            this.ayudaToolStripMenuItem,
+            this.indexingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(831, 24);
@@ -388,6 +391,21 @@
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 1;
             // 
+            // indexingToolStripMenuItem
+            // 
+            this.indexingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.indexarTXTToolStripMenuItem});
+            this.indexingToolStripMenuItem.Name = "indexingToolStripMenuItem";
+            this.indexingToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.indexingToolStripMenuItem.Text = "Indexing";
+            // 
+            // indexarTXTToolStripMenuItem
+            // 
+            this.indexarTXTToolStripMenuItem.Name = "indexarTXTToolStripMenuItem";
+            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.indexarTXTToolStripMenuItem.Text = "Indexar TXT";
+            this.indexarTXTToolStripMenuItem.Click += new System.EventHandler(this.indexarTXTToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,6 +475,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFechaHasta;
         private System.Windows.Forms.TextBox txtFechaDesde;
+        private System.Windows.Forms.ToolStripMenuItem indexingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem indexarTXTToolStripMenuItem;
     }
 }
 

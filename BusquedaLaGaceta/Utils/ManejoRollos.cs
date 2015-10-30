@@ -23,7 +23,7 @@ namespace BusquedaLaGaceta.Utils
         }
         public string FilePath(string fileName)
         {
-            var nombreArchivo = fileName.IndexOf("scan");
+            var nombreArchivo = fileName.IndexOf(".txt");
             fileName = fileName.Remove(0, nombreArchivo);
             var resultado =
                 db.Table_File_Names.Where(x => x.File_Name==fileName).FirstOrDefault();
@@ -34,8 +34,8 @@ namespace BusquedaLaGaceta.Utils
         }
         public string nombreArchivoPagina(string fileName)
         {
-            var nombreArchivo = fileName.IndexOf("scan");
-            fileName = fileName.Remove(0, nombreArchivo);
+            //var nombreArchivo = fileName.IndexOf(".txt");
+            fileName = fileName.Replace(".txt", "");// Remove(nombreArchivo, fileName.Count());
             try
             {
                 var resultado =

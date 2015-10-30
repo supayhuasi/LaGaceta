@@ -7,8 +7,8 @@ namespace SimpleLuceneSearch
 {
     public class SampleDataFileRow
     {
-        public int LineNumber { get; set; }
-        public string LineText { get; set; }
-        public float Score { get; set; }
+        public string CONTENT { get; set; }
+        public string PATH { get; set; }
+        public string NAME { get; set; }
     }
 }
