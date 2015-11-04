@@ -184,8 +184,11 @@ namespace BusquedaLaGaceta
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            string selectedNodeText = e.Node.Text;
-            setImage(rollos.FileRenamePath(selectedNodeText));
+            if (!e.Node.Text.Contains("R"))
+            {
+                string selectedNodeText = e.Node.Text;
+                setImage(selectedNodeText);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

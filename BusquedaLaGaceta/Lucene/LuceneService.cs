@@ -91,17 +91,17 @@ namespace SimpleLuceneSearch
 		//SpanishAnalyzer analyzer = new SpanishAnalyzer();
 				QueryParser queryParser = new QueryParser(Version.LUCENE_24, DocumentFunctions.CONTENT, analyzer);
 		Query query = queryParser.Parse(searchTerm);
-			var a = searcher.Search(query,20).ScoreDocs;            
+			var a = searcher.Search(query,30).ScoreDocs;            
 			for (int i=0;i < a.Length ;i++)
 			{
 				var document = searcher.Doc(a[i].Doc);
 				SearchResult searchResult = new SearchResult();
-				searchResult.Name = document.GetField(DocumentFunctions.NAME).StringValue;
+                searchResult.Name = document.GetField(DocumentFunctions.NAME).StringValue.Replace("\\", "").Replace(".txt","");
 				
                 //searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);
                 searchResult.Path = document.GetField(DocumentFunctions.PATH).StringValue;
                 var listImagenes = searchResult.Path.Substring(21).Split('\\');
-                searchResult.RollNumber = listImagenes[1];
+                searchResult.RollNumber = listImagenes[0];
                 var ima= result.Find(x=>x.Name.Equals(searchResult.Name));
                 
                 if (ima == null)

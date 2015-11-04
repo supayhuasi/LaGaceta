@@ -54,6 +54,8 @@
             this.usuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexarTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnPantalla = new System.Windows.Forms.Button();
             this.btnOriginal = new System.Windows.Forms.Button();
@@ -62,8 +64,6 @@
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.indexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexarTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -244,6 +244,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(174, 138);
             this.treeView1.TabIndex = 3;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // panel1
             // 
@@ -303,6 +304,21 @@
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // indexingToolStripMenuItem
+            // 
+            this.indexingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.indexarTXTToolStripMenuItem});
+            this.indexingToolStripMenuItem.Name = "indexingToolStripMenuItem";
+            this.indexingToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.indexingToolStripMenuItem.Text = "Indexing";
+            // 
+            // indexarTXTToolStripMenuItem
+            // 
+            this.indexarTXTToolStripMenuItem.Name = "indexarTXTToolStripMenuItem";
+            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.indexarTXTToolStripMenuItem.Text = "Indexar TXT";
+            this.indexarTXTToolStripMenuItem.Click += new System.EventHandler(this.indexarTXTToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -390,21 +406,6 @@
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 1;
-            // 
-            // indexingToolStripMenuItem
-            // 
-            this.indexingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.indexarTXTToolStripMenuItem});
-            this.indexingToolStripMenuItem.Name = "indexingToolStripMenuItem";
-            this.indexingToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.indexingToolStripMenuItem.Text = "Indexing";
-            // 
-            // indexarTXTToolStripMenuItem
-            // 
-            this.indexarTXTToolStripMenuItem.Name = "indexarTXTToolStripMenuItem";
-            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.indexarTXTToolStripMenuItem.Text = "Indexar TXT";
-            this.indexarTXTToolStripMenuItem.Click += new System.EventHandler(this.indexarTXTToolStripMenuItem_Click);
             // 
             // Form1
             // 
