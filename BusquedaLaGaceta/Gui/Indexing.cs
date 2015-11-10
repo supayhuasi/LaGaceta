@@ -23,7 +23,7 @@ namespace BusquedaLaGaceta.Gui
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string directorio = "E:\\Archivos de Texto\\R555-16-12-1999-15-01-2000";
+            string directorio = txtDirTXT.Text;
 
             var ficheros = Directory.GetFiles(directorio);
             List<SampleDataFileRow> lista= new List<SampleDataFileRow>(); 
@@ -36,7 +36,25 @@ namespace BusquedaLaGaceta.Gui
                 aux.NAME = fichero.Replace(directorio,"");
                 lista.Add(aux);
             }
-            luceneService.BuildIndex(lista);
+            luceneService.BuildIndex(lista,txtDirLucene.Text);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog1folder = new FolderBrowserDialog();
+            if (folderBrowserDialog1folder.ShowDialog() == DialogResult.OK)
+            {
+                txtDirTXT.Text = folderBrowserDialog1folder.SelectedPath;                
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog1folder = new FolderBrowserDialog();
+            if (folderBrowserDialog1folder.ShowDialog() == DialogResult.OK)
+            {
+                txtDirLucene.Text = folderBrowserDialog1folder.SelectedPath;
+            }
         }
     }
 }

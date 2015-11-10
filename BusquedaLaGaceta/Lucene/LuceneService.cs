@@ -16,7 +16,7 @@ namespace SimpleLuceneSearch
 {
 	public interface ILuceneService
 	{
-		void BuildIndex(IEnumerable<SampleDataFileRow> dataToIndex);
+		void BuildIndex(IEnumerable<SampleDataFileRow> dataToIndex, string txtLucene);
 		List<SearchResult> Search(string searchTerm, DateTime fechaDesde, DateTime fechaHasta, bool bDiario);
 	}
 
@@ -50,9 +50,9 @@ namespace SimpleLuceneSearch
 			rollos = new ManejoRollos();            
 		}
 
-		public void BuildIndex(IEnumerable<SampleDataFileRow> dataToIndex)
+		public void BuildIndex(IEnumerable<SampleDataFileRow> dataToIndex, string txtDir)
 		{
-            luceneIndexDirectory = FSDirectory.Open(indexPath);
+            luceneIndexDirectory = FSDirectory.Open(txtDir);
             writer = new IndexWriter(luceneIndexDirectory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED);
             foreach (var sampleDataFileRow in dataToIndex)
             {
@@ -79,7 +79,7 @@ namespace SimpleLuceneSearch
 			{
 				
 				string pathAplicacion = BusquedaLaGaceta.Properties.Resources.IndexPath;
-				var indexPath = pathAplicacion + path.DB_Path.Replace("E:\\db_lucene\\", "");
+				var indexPath = pathAplicacion + path.DB_Path.Replace("O:\\db_lucene\\", "");
 				
 				
 		luceneIndexDirectory = FSDirectory.Open(indexPath);

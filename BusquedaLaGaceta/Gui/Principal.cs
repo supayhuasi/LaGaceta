@@ -169,8 +169,7 @@ namespace BusquedaLaGaceta
                 NameImagen = path;
                 path = rollos.FilePath(path);
                 pictureBox1.Image = Image.FromFile(path);
-                imagenSeleccionada = Image.FromFile(path);
-                
+                imagenSeleccionada = Image.FromFile(path);                
                 return true;
 
             }
@@ -208,15 +207,16 @@ namespace BusquedaLaGaceta
 
         private void btnMinizar_Click(object sender, EventArgs e)
         {
-
+            Minimizar();
+        }
+        private void Minimizar()
+        {
             var ancho = pictureBox1.Width - pictureBox1.Width / 2;
             var alto = pictureBox1.Height - pictureBox1.Height / 2;
 
-            pictureBox1.Image = ImageUtils.ScaleImage(pictureBox1.Image,ancho , alto);
+            pictureBox1.Image = ImageUtils.ScaleImage(pictureBox1.Image, ancho, alto);
             pictureBox1.Width = pictureBox1.Image.Width;
             pictureBox1.Height = pictureBox1.Image.Height;
-
-
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,7 +335,7 @@ namespace BusquedaLaGaceta
             FolderBrowserDialog folderBrowserDialog1folder = new FolderBrowserDialog();
             if (folderBrowserDialog1folder.ShowDialog() == DialogResult.OK)
             {                
-                pictureBox1.Image.Save(folderBrowserDialog1folder.SelectedPath + NameImagen + ".jpg", ImageFormat.Jpeg);
+                pictureBox1.Image.Save(folderBrowserDialog1folder.SelectedPath + "\\" + NameImagen, ImageFormat.Jpeg);
                 
             }
             
