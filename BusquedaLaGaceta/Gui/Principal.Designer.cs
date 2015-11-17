@@ -76,7 +76,7 @@
             this.flowLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flowLayoutPanel1.BackgroundImage")));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 26);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1137, 43);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1368, 43);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // grp1

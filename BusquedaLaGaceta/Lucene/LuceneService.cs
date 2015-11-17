@@ -79,7 +79,7 @@ namespace SimpleLuceneSearch
 			{
 				
 				string pathAplicacion = BusquedaLaGaceta.Properties.Resources.IndexPath;
-				var indexPath = pathAplicacion + path.DB_Path.Replace("O:\\db_lucene\\", "");
+				var indexPath = pathAplicacion + path.DB_Path.Replace("E:\\db_lucene\\", "");
 				
 				
 		luceneIndexDirectory = FSDirectory.Open(indexPath);

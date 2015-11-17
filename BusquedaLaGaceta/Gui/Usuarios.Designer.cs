@@ -33,15 +33,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.aIDataSet = new BusquedaLaGaceta.AIDataSet();
-            this.tableUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.table_UserTableAdapter = new BusquedaLaGaceta.AIDataSetTableAdapters.Table_UserTableAdapter();
             this.iDUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aIDataSet = new BusquedaLaGaceta.AIDataSet();
+            this.table_UserTableAdapter = new BusquedaLaGaceta.AIDataSetTableAdapters.Table_UserTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aIDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableUserBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aIDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAlta
@@ -56,21 +56,23 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(154, 49);
+            this.button2.Location = new System.Drawing.Point(200, 49);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "Baja";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(322, 49);
+            this.button3.Location = new System.Drawing.Point(119, 49);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
             this.button3.Text = "Modificacion";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
             // 
@@ -83,22 +85,9 @@
             this.dataGridView1.DataSource = this.tableUserBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(13, 122);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(384, 150);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // aIDataSet
-            // 
-            this.aIDataSet.DataSetName = "AIDataSet";
-            this.aIDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableUserBindingSource
-            // 
-            this.tableUserBindingSource.DataMember = "Table_User";
-            this.tableUserBindingSource.DataSource = this.aIDataSet;
-            // 
-            // table_UserTableAdapter
-            // 
-            this.table_UserTableAdapter.ClearBeforeFill = true;
             // 
             // iDUserDataGridViewTextBoxColumn
             // 
@@ -120,6 +109,20 @@
             this.userPasswordDataGridViewTextBoxColumn.HeaderText = "User_Password";
             this.userPasswordDataGridViewTextBoxColumn.Name = "userPasswordDataGridViewTextBoxColumn";
             // 
+            // tableUserBindingSource
+            // 
+            this.tableUserBindingSource.DataMember = "Table_User";
+            this.tableUserBindingSource.DataSource = this.aIDataSet;
+            // 
+            // aIDataSet
+            // 
+            this.aIDataSet.DataSetName = "AIDataSet";
+            this.aIDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // table_UserTableAdapter
+            // 
+            this.table_UserTableAdapter.ClearBeforeFill = true;
+            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,11 +133,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAlta);
             this.Name = "Usuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.Usuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aIDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableUserBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aIDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

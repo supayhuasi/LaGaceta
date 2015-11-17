@@ -14,6 +14,8 @@ namespace BusquedaLaGaceta.Gui
     public partial class UsuarioAM : Form
     {
         private ManejoUsuarios usuarioDAL { get; set; }
+        private bool modificar { get; set; }
+        private int idUsuario { get; set; }
         public UsuarioAM()
         {
             InitializeComponent();
@@ -21,6 +23,19 @@ namespace BusquedaLaGaceta.Gui
             cboPerfiles.DataSource = usuarioDAL.listaPerfiles();
             cboPerfiles.DisplayMember = "name";
             cboPerfiles.ValueMember = "id";
+            modificar = false;
+        }
+        public UsuarioAM(Table_User usuario)
+        {
+            InitializeComponent();
+            usuarioDAL = new ManejoUsuarios();
+            cboPerfiles.DataSource = usuarioDAL.listaPerfiles();
+            cboPerfiles.DisplayMember = "name";
+            cboPerfiles.ValueMember = "id";
+            txtUsuario.Text = usuario.User_Name;
+            txtContrasenia.Text = usuario.User_Password;
+            idUsuario = usuario.ID_User;
+            modificar = true;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,7 +50,34 @@ namespace BusquedaLaGaceta.Gui
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            usuarioDAL.AgregarUsuario(txtUsuario.Text, txtContrasenia.Text);
+            if (!modificar)
+            {
+                var resultado = usuarioDAL.AgregarUsuario(txtUsuario.Text, txtContrasenia.Text, txtContrasenia2.Text);
+                if (resultado)
+                {
+                    MessageBox.Show("Se agrego el usuario correctamente");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Claves no coinciden.");
+                }
+            }
+            else
+            {
+                var resultado = usuarioDAL.ModificarUsuario(idUsuario,txtUsuario.Text, txtContrasenia.Text, txtContrasenia2.Text);
+                if (resultado)
+                {
+                    MessageBox.Show("Se agrego el usuario correctamente");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Claves no coinciden.");
+                }
+            }
+            
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

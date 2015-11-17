@@ -101,6 +101,7 @@
             // 
             this.txtContrasenia.Location = new System.Drawing.Point(117, 81);
             this.txtContrasenia.Name = "txtContrasenia";
+            this.txtContrasenia.PasswordChar = '*';
             this.txtContrasenia.Size = new System.Drawing.Size(170, 20);
             this.txtContrasenia.TabIndex = 6;
             // 
@@ -117,6 +118,7 @@
             // 
             this.txtContrasenia2.Location = new System.Drawing.Point(117, 102);
             this.txtContrasenia2.Name = "txtContrasenia2";
+            this.txtContrasenia2.PasswordChar = '*';
             this.txtContrasenia2.Size = new System.Drawing.Size(170, 20);
             this.txtContrasenia2.TabIndex = 9;
             // 
@@ -146,6 +148,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Name = "UsuarioAM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsuarioAM";
             this.ResumeLayout(false);
             this.PerformLayout();

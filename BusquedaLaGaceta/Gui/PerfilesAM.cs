@@ -32,7 +32,7 @@ namespace BusquedaLaGaceta.Gui
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            usuarioDAL.AgregarUsuario(txtUsuario.Text, txtContrasenia.Text);
+            //usuarioDAL.AgregarUsuario(txtUsuario.Text, txtContrasenia.Text);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
