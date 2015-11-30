@@ -64,6 +64,7 @@
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.generarTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -308,7 +309,8 @@
             // indexingToolStripMenuItem
             // 
             this.indexingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.indexarTXTToolStripMenuItem});
+            this.indexarTXTToolStripMenuItem,
+            this.generarTXTToolStripMenuItem});
             this.indexingToolStripMenuItem.Name = "indexingToolStripMenuItem";
             this.indexingToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.indexingToolStripMenuItem.Text = "Indexing";
@@ -316,7 +318,7 @@
             // indexarTXTToolStripMenuItem
             // 
             this.indexarTXTToolStripMenuItem.Name = "indexarTXTToolStripMenuItem";
-            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.indexarTXTToolStripMenuItem.Text = "Indexar TXT";
             this.indexarTXTToolStripMenuItem.Click += new System.EventHandler(this.indexarTXTToolStripMenuItem_Click);
             // 
@@ -407,6 +409,13 @@
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 1;
             // 
+            // generarTXTToolStripMenuItem
+            // 
+            this.generarTXTToolStripMenuItem.Name = "generarTXTToolStripMenuItem";
+            this.generarTXTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generarTXTToolStripMenuItem.Text = "Generar TXT";
+            this.generarTXTToolStripMenuItem.Click += new System.EventHandler(this.generarTXTToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +487,7 @@
         private System.Windows.Forms.TextBox txtFechaDesde;
         private System.Windows.Forms.ToolStripMenuItem indexingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexarTXTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarTXTToolStripMenuItem;
     }
 }
 

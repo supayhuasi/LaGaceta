@@ -120,6 +120,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Gui\GenerarTXT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\GenerarTXT.Designer.cs">
+      <DependentUpon>GenerarTXT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Indexing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     <Compile Include="Utils\SpanishAnalyzer.cs" />
     <Compile Include="Utils\SpanishStemFilter.cs" />
     <Compile Include="Utils\ManejoUsuarios.cs" />
+    <EmbeddedResource Include="Gui\GenerarTXT.resx">
+      <DependentUpon>GenerarTXT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\Indexing.resx">
       <DependentUpon>Indexing.cs</DependentUpon>
     </EmbeddedResource>

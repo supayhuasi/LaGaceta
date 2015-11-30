@@ -397,6 +397,12 @@ namespace BusquedaLaGaceta
             Indexing usuarios = new Indexing();
             usuarios.Show();  
         }
+
+        private void generarTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerarTXT generar = new GenerarTXT();
+            generar.Show();
+        }
     }
 }
 

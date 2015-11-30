@@ -31,7 +31,7 @@ namespace BusquedaLaGaceta.Gui
             {
                 string text = System.IO.File.ReadAllText(fichero);
                 SampleDataFileRow aux = new SampleDataFileRow();
-                aux.CONTENT= text;
+                aux.CONTENT= text.ToLower();
                 aux.PATH = fichero;
                 aux.NAME = fichero.Replace(directorio,"");
                 lista.Add(aux);
