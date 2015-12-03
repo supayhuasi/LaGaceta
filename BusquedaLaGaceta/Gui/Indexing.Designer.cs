@@ -69,7 +69,7 @@
             // 
             // txtDirLucene
             // 
-            this.txtDirLucene.Location = new System.Drawing.Point(133, 93);
+            this.txtDirLucene.Location = new System.Drawing.Point(133, 125);
             this.txtDirLucene.Name = "txtDirLucene";
             this.txtDirLucene.Size = new System.Drawing.Size(197, 20);
             this.txtDirLucene.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(346, 92);
+            this.button2.Location = new System.Drawing.Point(346, 122);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -115,12 +115,13 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(346, 121);
+            this.button5.Location = new System.Drawing.Point(346, 96);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 10;
             this.button5.Text = "...";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
@@ -133,7 +134,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 122);
+            this.textBox1.Location = new System.Drawing.Point(133, 96);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(197, 20);
             this.textBox1.TabIndex = 8;

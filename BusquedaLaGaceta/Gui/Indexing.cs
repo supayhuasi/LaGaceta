@@ -26,7 +26,8 @@ namespace BusquedaLaGaceta.Gui
             string directorio = txtDirTXT.Text;
 
             var ficheros = Directory.GetFiles(directorio);
-            List<SampleDataFileRow> lista= new List<SampleDataFileRow>(); 
+            List<SampleDataFileRow> lista= new List<SampleDataFileRow>();
+            var nombreImagenes = File.ReadAllText(textBox1.Text);
             foreach (var fichero in ficheros)
             {
                 string text = System.IO.File.ReadAllText(fichero);
@@ -60,6 +61,15 @@ namespace BusquedaLaGaceta.Gui
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog folderBrowserDialog1folder= new OpenFileDialog();
+            if (folderBrowserDialog1folder.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = folderBrowserDialog1folder.FileName;
+            }
         }
     }
 }

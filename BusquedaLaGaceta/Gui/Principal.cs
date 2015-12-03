@@ -403,6 +403,12 @@ namespace BusquedaLaGaceta
             GenerarTXT generar = new GenerarTXT();
             generar.Show();
         }
+
+        private void renombrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Renombrar generar = new Renombrar();
+            generar.Show();
+        }
     }
 }
 

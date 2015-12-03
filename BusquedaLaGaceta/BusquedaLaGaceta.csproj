@@ -156,6 +156,12 @@
     <Compile Include="Gui\PerfilesAM.Designer.cs">
       <DependentUpon>PerfilesAM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Renombrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Renombrar.Designer.cs">
+      <DependentUpon>Renombrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\UsuarioAM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\PerfilesAM.resx">
       <DependentUpon>PerfilesAM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Renombrar.resx">
+      <DependentUpon>Renombrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\UsuarioAM.resx">
       <DependentUpon>UsuarioAM.cs</DependentUpon>

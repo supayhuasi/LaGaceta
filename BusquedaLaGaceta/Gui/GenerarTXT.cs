@@ -48,11 +48,29 @@ namespace BusquedaLaGaceta.Gui
             //List<SampleDataFileRow> lista = new List<SampleDataFileRow>();
             foreach (var fichero in ficheros)
             {
-                nombres = nombres + "," + fichero.Replace(directorio + "\\", "");                
+                if(i>0)
+                nombres = nombres + "," + fichero.Replace(directorio + "\\", "");
+                i = i + 1;
 
             }
-            File.WriteAllText(directorioDestino + "/55.txt", nombres);
+            File.WriteAllText(directorioDestino + "/" + txtRollo.Text + ".txt" , nombres);
+            MessageBox.Show("Se genero correctamente el archivo " + txtRollo.Text + ".txt");
             //luceneService.BuildIndex(lista, txtDirLucene.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
