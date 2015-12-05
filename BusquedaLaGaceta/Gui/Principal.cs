@@ -68,10 +68,15 @@ namespace BusquedaLaGaceta
             treeView1.Invoke(new UpdateUI(limpiezaTree));
             int i = 0;
             string aux="";
-            var fechaCortadas = txtFechaDesde.Text.Split('/');
-            DateTime fechaDesde = new DateTime(int.Parse(fechaCortadas[2]), int.Parse(fechaCortadas[1]), int.Parse(fechaCortadas[0]));
-            fechaCortadas = txtFechaHasta.Text.Split('/');
-            DateTime fechaHasta = new DateTime(int.Parse(fechaCortadas[2]), int.Parse(fechaCortadas[1]), int.Parse(fechaCortadas[0]));
+            //var fechaCortadas = txtFechaDesde.Text.Split('/');
+            DateTime fechaHasta= new DateTime();
+            //DateTime fechaDesde = new DateTime(int.Parse(fechaCortadas[2]), int.Parse(fechaCortadas[1]), int.Parse(fechaCortadas[0]));
+            DateTime fechaDesde = dateDesde.Value;
+            if (!chkDiario.Checked)
+            {
+             //   fechaCortadas = txtFechaHasta.Text.Split('/');
+                fechaHasta = dateHasta.Value;
+            }
             List<SearchResult> resultados;
             if (!chkDiario.Checked)
                 resultados = luceneService.Search(txtBuscar.Text, fechaDesde, fechaHasta, true);
@@ -234,12 +239,12 @@ namespace BusquedaLaGaceta
         {
             if (chkDiario.Checked == true)
             {
-                txtFechaHasta.Enabled = false;
+                dateHasta.Enabled = false;
                 chkRango.Checked = false;
             }
             else
             {
-                txtFechaHasta.Enabled = true;
+                dateHasta.Enabled = true;
                 chkRango.Checked = true;
             }
         }
@@ -248,12 +253,12 @@ namespace BusquedaLaGaceta
         {
             if (chkRango.Checked == true)
             {
-                txtFechaHasta.Enabled = true;
+                dateHasta.Enabled = true;
                 chkDiario.Checked = false;
             }
             else
             {
-                txtFechaHasta.Enabled = false;
+                dateHasta.Enabled = false;
                 chkDiario.Checked = true;
             }
         }

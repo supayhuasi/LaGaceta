@@ -59,5 +59,10 @@ namespace BusquedaLaGaceta.Gui
                 txtDestino.Text = folderBrowserDialog1folder.SelectedPath;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

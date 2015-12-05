@@ -34,8 +34,6 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtFechaHasta = new System.Windows.Forms.TextBox();
-            this.txtFechaDesde = new System.Windows.Forms.TextBox();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lresultado = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -66,6 +64,8 @@
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.dateDesde = new System.Windows.Forms.DateTimePicker();
+            this.dateHasta = new System.Windows.Forms.DateTimePicker();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -83,10 +83,10 @@
             // 
             // grp1
             // 
+            this.grp1.Controls.Add(this.dateHasta);
+            this.grp1.Controls.Add(this.dateDesde);
             this.grp1.Controls.Add(this.label2);
             this.grp1.Controls.Add(this.label1);
-            this.grp1.Controls.Add(this.txtFechaHasta);
-            this.grp1.Controls.Add(this.txtFechaDesde);
             this.grp1.Controls.Add(this.btnImprimir);
             this.grp1.Controls.Add(this.lresultado);
             this.grp1.Controls.Add(this.btnLimpiar);
@@ -120,20 +120,6 @@
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "Fecha Desde:";
-            // 
-            // txtFechaHasta
-            // 
-            this.txtFechaHasta.Location = new System.Drawing.Point(16, 121);
-            this.txtFechaHasta.Name = "txtFechaHasta";
-            this.txtFechaHasta.Size = new System.Drawing.Size(150, 20);
-            this.txtFechaHasta.TabIndex = 13;
-            // 
-            // txtFechaDesde
-            // 
-            this.txtFechaDesde.Location = new System.Drawing.Point(16, 80);
-            this.txtFechaDesde.Name = "txtFechaDesde";
-            this.txtFechaDesde.Size = new System.Drawing.Size(150, 20);
-            this.txtFechaDesde.TabIndex = 12;
             // 
             // btnImprimir
             // 
@@ -320,21 +306,21 @@
             // indexarTXTToolStripMenuItem
             // 
             this.indexarTXTToolStripMenuItem.Name = "indexarTXTToolStripMenuItem";
-            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.indexarTXTToolStripMenuItem.Text = "Indexar TXT";
             this.indexarTXTToolStripMenuItem.Click += new System.EventHandler(this.indexarTXTToolStripMenuItem_Click);
             // 
             // generarTXTToolStripMenuItem
             // 
             this.generarTXTToolStripMenuItem.Name = "generarTXTToolStripMenuItem";
-            this.generarTXTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generarTXTToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.generarTXTToolStripMenuItem.Text = "Generar TXT";
             this.generarTXTToolStripMenuItem.Click += new System.EventHandler(this.generarTXTToolStripMenuItem_Click);
             // 
             // renombrarToolStripMenuItem
             // 
             this.renombrarToolStripMenuItem.Name = "renombrarToolStripMenuItem";
-            this.renombrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renombrarToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.renombrarToolStripMenuItem.Text = "Renombrar";
             this.renombrarToolStripMenuItem.Click += new System.EventHandler(this.renombrarToolStripMenuItem_Click);
             // 
@@ -425,6 +411,20 @@
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 1;
             // 
+            // dateDesde
+            // 
+            this.dateDesde.Location = new System.Drawing.Point(16, 80);
+            this.dateDesde.Name = "dateDesde";
+            this.dateDesde.Size = new System.Drawing.Size(150, 20);
+            this.dateDesde.TabIndex = 3;
+            // 
+            // dateHasta
+            // 
+            this.dateHasta.Location = new System.Drawing.Point(16, 121);
+            this.dateHasta.Name = "dateHasta";
+            this.dateHasta.Size = new System.Drawing.Size(150, 20);
+            this.dateHasta.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,12 +492,12 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFechaHasta;
-        private System.Windows.Forms.TextBox txtFechaDesde;
         private System.Windows.Forms.ToolStripMenuItem indexingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexarTXTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarTXTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renombrarToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dateHasta;
+        private System.Windows.Forms.DateTimePicker dateDesde;
     }
 }
 
