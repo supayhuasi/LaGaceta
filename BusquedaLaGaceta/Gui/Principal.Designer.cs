@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.grp1 = new System.Windows.Forms.GroupBox();
+            this.dateHasta = new System.Windows.Forms.DateTimePicker();
+            this.dateDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
@@ -64,8 +66,7 @@
             this.btnCortar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.dateDesde = new System.Windows.Forms.DateTimePicker();
-            this.dateHasta = new System.Windows.Forms.DateTimePicker();
+            this.actualizarPaginasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -102,6 +103,20 @@
             this.grp1.TabIndex = 1;
             this.grp1.TabStop = false;
             this.grp1.Text = "Busqueda por Fecha";
+            // 
+            // dateHasta
+            // 
+            this.dateHasta.Location = new System.Drawing.Point(16, 121);
+            this.dateHasta.Name = "dateHasta";
+            this.dateHasta.Size = new System.Drawing.Size(150, 20);
+            this.dateHasta.TabIndex = 3;
+            // 
+            // dateDesde
+            // 
+            this.dateDesde.Location = new System.Drawing.Point(16, 80);
+            this.dateDesde.Name = "dateDesde";
+            this.dateDesde.Size = new System.Drawing.Size(150, 20);
+            this.dateDesde.TabIndex = 3;
             // 
             // label2
             // 
@@ -298,7 +313,8 @@
             this.indexingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.indexarTXTToolStripMenuItem,
             this.generarTXTToolStripMenuItem,
-            this.renombrarToolStripMenuItem});
+            this.renombrarToolStripMenuItem,
+            this.actualizarPaginasToolStripMenuItem});
             this.indexingToolStripMenuItem.Name = "indexingToolStripMenuItem";
             this.indexingToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.indexingToolStripMenuItem.Text = "Indexing";
@@ -306,21 +322,21 @@
             // indexarTXTToolStripMenuItem
             // 
             this.indexarTXTToolStripMenuItem.Name = "indexarTXTToolStripMenuItem";
-            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.indexarTXTToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.indexarTXTToolStripMenuItem.Text = "Indexar TXT";
             this.indexarTXTToolStripMenuItem.Click += new System.EventHandler(this.indexarTXTToolStripMenuItem_Click);
             // 
             // generarTXTToolStripMenuItem
             // 
             this.generarTXTToolStripMenuItem.Name = "generarTXTToolStripMenuItem";
-            this.generarTXTToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.generarTXTToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.generarTXTToolStripMenuItem.Text = "Generar TXT";
             this.generarTXTToolStripMenuItem.Click += new System.EventHandler(this.generarTXTToolStripMenuItem_Click);
             // 
             // renombrarToolStripMenuItem
             // 
             this.renombrarToolStripMenuItem.Name = "renombrarToolStripMenuItem";
-            this.renombrarToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.renombrarToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.renombrarToolStripMenuItem.Text = "Renombrar";
             this.renombrarToolStripMenuItem.Click += new System.EventHandler(this.renombrarToolStripMenuItem_Click);
             // 
@@ -411,19 +427,12 @@
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 1;
             // 
-            // dateDesde
+            // actualizarPaginasToolStripMenuItem
             // 
-            this.dateDesde.Location = new System.Drawing.Point(16, 80);
-            this.dateDesde.Name = "dateDesde";
-            this.dateDesde.Size = new System.Drawing.Size(150, 20);
-            this.dateDesde.TabIndex = 3;
-            // 
-            // dateHasta
-            // 
-            this.dateHasta.Location = new System.Drawing.Point(16, 121);
-            this.dateHasta.Name = "dateHasta";
-            this.dateHasta.Size = new System.Drawing.Size(150, 20);
-            this.dateHasta.TabIndex = 3;
+            this.actualizarPaginasToolStripMenuItem.Name = "actualizarPaginasToolStripMenuItem";
+            this.actualizarPaginasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.actualizarPaginasToolStripMenuItem.Text = "Actualizar Paginas";
+            this.actualizarPaginasToolStripMenuItem.Click += new System.EventHandler(this.actualizarPaginasToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -498,6 +507,7 @@
         private System.Windows.Forms.ToolStripMenuItem renombrarToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dateHasta;
         private System.Windows.Forms.DateTimePicker dateDesde;
+        private System.Windows.Forms.ToolStripMenuItem actualizarPaginasToolStripMenuItem;
     }
 }
 

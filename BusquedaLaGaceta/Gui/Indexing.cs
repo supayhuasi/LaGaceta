@@ -27,15 +27,26 @@ namespace BusquedaLaGaceta.Gui
 
             var ficheros = Directory.GetFiles(directorio);
             List<SampleDataFileRow> lista= new List<SampleDataFileRow>();
-            var nombreImagenes = File.ReadAllText(textBox1.Text);
-            foreach (var fichero in ficheros)
+            var nombreImagenes = File.ReadAllText(txtImagenes.Text).Replace(".JPG","").Split(',');
+            //var a = nombreImagenes.OrderByDescending(x=>x.fi)
+            int i = 0;
+            if (ficheros.Count() == nombreImagenes.Count())
             {
-                string text = System.IO.File.ReadAllText(fichero);
-                SampleDataFileRow aux = new SampleDataFileRow();
-                aux.CONTENT= text.ToLower();
-                aux.PATH = fichero;
-                aux.NAME = fichero.Replace(directorio,"");
-                lista.Add(aux);
+                foreach (var fichero in ficheros)
+                {
+
+                    string text = System.IO.File.ReadAllText(fichero);
+                    SampleDataFileRow aux = new SampleDataFileRow();
+                    aux.CONTENT = text.ToLower();
+                    aux.PATH = fichero;
+                    aux.NAME = Path.GetFileName(nombreImagenes[i]);
+                    lista.Add(aux);
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("La cantidad de archivos son diferentes");
             }
             luceneService.BuildIndex(lista,txtDirLucene.Text);
         }
@@ -68,7 +79,7 @@ namespace BusquedaLaGaceta.Gui
             OpenFileDialog folderBrowserDialog1folder= new OpenFileDialog();
             if (folderBrowserDialog1folder.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = folderBrowserDialog1folder.FileName;
+                txtImagenes.Text = folderBrowserDialog1folder.FileName;
             }
         }
     }

@@ -162,6 +162,12 @@
     <Compile Include="Gui\Renombrar.Designer.cs">
       <DependentUpon>Renombrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\UpdateNames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\UpdateNames.Designer.cs">
+      <DependentUpon>UpdateNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\UsuarioAM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Renombrar.resx">
       <DependentUpon>Renombrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\UpdateNames.resx">
+      <DependentUpon>UpdateNames.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\UsuarioAM.resx">
       <DependentUpon>UsuarioAM.cs</DependentUpon>

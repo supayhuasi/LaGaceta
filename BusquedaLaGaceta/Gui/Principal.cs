@@ -414,6 +414,12 @@ namespace BusquedaLaGaceta
             Renombrar generar = new Renombrar();
             generar.Show();
         }
+
+        private void actualizarPaginasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateNames generar = new UpdateNames();
+            generar.Show();
+        }
     }
 }
 

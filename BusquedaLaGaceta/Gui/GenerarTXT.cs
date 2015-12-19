@@ -42,15 +42,26 @@ namespace BusquedaLaGaceta.Gui
 
             var ficheros = Directory.GetFiles(directorio);
             string nombres= "";
-            int i = 0;
+            int numeroPagina = 0;
+            string sNumeroPagina="";
             var directorioDestino = txtTxt.Text;
 
             //List<SampleDataFileRow> lista = new List<SampleDataFileRow>();
             foreach (var fichero in ficheros)
             {
-                if(i>0)
-                nombres = nombres + "," + fichero.Replace(directorio + "\\", "");
-                i = i + 1;
+                var numeroPaginas = fichero.Replace(directorio + "\\", "").Split('-');
+                numeroPagina = Convert.ToInt32(numeroPaginas[3].Replace(".JPG", "").ToString());
+                if (numeroPagina < 10)
+                    sNumeroPagina = "0" + numeroPagina;
+                else
+                    sNumeroPagina = numeroPagina.ToString();
+                
+                if(nombres!="")
+                nombres = nombres + "," + fichero.Replace(directorio + "\\", "").Replace(numeroPagina + ".JPG",sNumeroPagina + ".JPG");
+
+                else
+                    nombres = fichero.Replace(directorio + "\\", "").Replace(numeroPagina + ".JPG", sNumeroPagina + ".JPG"); 
+                
 
             }
             File.WriteAllText(directorioDestino + "/" + txtRollo.Text + ".txt" , nombres);

@@ -21,6 +21,22 @@ namespace BusquedaLaGaceta.Utils
                 db.Table_LuceneDBIndexAddress.Where(x => x.Date_From <= fechaDesde && x.Date_To >= fechaHasta);
             return resultado;            
         }
+        public bool InsertarFileName(string filename, string rename, string directorio)
+        {
+            try { 
+            var dbFileNames = new Table_File_Names();
+            dbFileNames.Directory = directorio;
+            dbFileNames.File_Name = filename;
+            dbFileNames.File_Rename = rename;
+            db.Table_File_Names.Add(dbFileNames);
+            db.SaveChanges();
+            return true;
+                }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
         public string FilePath(string fileName)
         {
             //var nombreArchivo = fileName.IndexOf(".txt");
