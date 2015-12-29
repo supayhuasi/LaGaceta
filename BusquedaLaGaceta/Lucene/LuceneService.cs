@@ -79,7 +79,7 @@ namespace SimpleLuceneSearch
 			{
 				
 				string pathAplicacion = BusquedaLaGaceta.Properties.Resources.IndexPath;
-				var indexPath = pathAplicacion + path.DB_Path.Replace("O:\\db_lucene\\", "");
+				var indexPath = pathAplicacion + path.DB_Path.Replace("E:\\db_lucene\\", "");
 				
 				
 		luceneIndexDirectory = FSDirectory.Open(indexPath);
@@ -101,7 +101,7 @@ namespace SimpleLuceneSearch
                 //searchResult.Path = rollos.FilePath(document.GetField(DocumentFunctions.PATH).StringValue);
                 searchResult.Path = document.GetField(DocumentFunctions.PATH).StringValue;
                 var listImagenes = searchResult.Path.Substring(21).Split('\\');
-                searchResult.RollNumber = listImagenes[0];
+                searchResult.RollNumber = path.Roll_Number;
                 var ima= result.Find(x=>x.Name.Equals(searchResult.Name));
                 
                 if (ima == null)

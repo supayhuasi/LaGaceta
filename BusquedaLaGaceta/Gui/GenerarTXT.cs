@@ -40,27 +40,32 @@ namespace BusquedaLaGaceta.Gui
         {
             string directorio = txtImagenes.Text;
 
-            var ficheros = Directory.GetFiles(directorio);
+
+            DirectoryInfo info = new DirectoryInfo(directorio);
+            FileInfo[] files = info.GetFiles().OrderBy(p => p.LastWriteTime).ToArray();            
+
+            //var ficheros = Directory.GetFiles(directorio).OrderByDescending(d => new FileInfo(d).CreationTime);
             string nombres= "";
             int numeroPagina = 0;
             string sNumeroPagina="";
             var directorioDestino = txtTxt.Text;
 
             //List<SampleDataFileRow> lista = new List<SampleDataFileRow>();
-            foreach (var fichero in ficheros)
-            {
-                var numeroPaginas = fichero.Replace(directorio + "\\", "").Split('-');
-                numeroPagina = Convert.ToInt32(numeroPaginas[3].Replace(".JPG", "").ToString());
-                if (numeroPagina < 10)
-                    sNumeroPagina = "0" + numeroPagina;
-                else
-                    sNumeroPagina = numeroPagina.ToString();
-                
-                if(nombres!="")
-                nombres = nombres + "," + fichero.Replace(directorio + "\\", "").Replace(numeroPagina + ".JPG",sNumeroPagina + ".JPG");
+            foreach (FileInfo fichero in files)
+            {            
+            
+                //var numeroPaginas = fichero.Replace(directorio + "\\", "").Split('-');
+                //numeroPagina = Convert.ToInt32(numeroPaginas[3].Replace(".JPG", "").ToString());
+                //if (numeroPagina < 10)
+                //    sNumeroPagina = "0" + numeroPagina;
+                //else
+                //    sNumeroPagina = numeroPagina.ToString();
 
+                if (nombres != "")
+                    nombres = nombres + "," + fichero.Name;//fichero.Replace(directorio + "\\", "");
                 else
-                    nombres = fichero.Replace(directorio + "\\", "").Replace(numeroPagina + ".JPG", sNumeroPagina + ".JPG"); 
+                    nombres = fichero.Name;
+                        //.Replace(numeroPagina + ".JPG", sNumeroPagina + ".JPG"); 
                 
 
             }

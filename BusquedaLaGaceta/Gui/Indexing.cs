@@ -1,4 +1,5 @@
-﻿using SimpleLuceneSearch;
+﻿using BusquedaLaGaceta.Utils;
+using SimpleLuceneSearch;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,12 @@ namespace BusquedaLaGaceta.Gui
     public partial class Indexing : Form
     {
         private LuceneService luceneService { get; set; }
+        private ManejoRollos manejoRollos { get; set; }
         public Indexing()
         {
             InitializeComponent();
             luceneService = new LuceneService();
+            manejoRollos = new ManejoRollos();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,7 +43,9 @@ namespace BusquedaLaGaceta.Gui
                     aux.CONTENT = text.ToLower();
                     aux.PATH = fichero;
                     aux.NAME = Path.GetFileName(nombreImagenes[i]);
+                    manejoRollos.InsertFileNames(Properties.Resources.Imagenes.Replace("\\\\","\\") + txtNombreRollo.Text, aux.NAME + ".JPG", aux.NAME + ".JPG");
                     lista.Add(aux);
+                    i++;
 
                 }
             }

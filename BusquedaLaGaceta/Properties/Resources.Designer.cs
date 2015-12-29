@@ -107,7 +107,7 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O:\\.
+        ///   Looks up a localized string similar to E:\\.
         /// </summary>
         internal static string DiscoImagenes {
             get {
@@ -116,7 +116,7 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O:\\ARCHIVOS INDEXING\\.
+        ///   Looks up a localized string similar to E:\\ARCHIVOS INDEXING\\.
         /// </summary>
         internal static string Imagenes {
             get {
@@ -125,7 +125,7 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O:\\Archivos Indexing\\Imagenes Cortadas\\.
+        ///   Looks up a localized string similar to E:\\Archivos Indexing\\Imagenes Cortadas\\.
         /// </summary>
         internal static string ImagenesCortadas {
             get {
@@ -134,7 +134,7 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O:\\ARCHIVOS INDEXING\\noencontrada.png.
+        ///   Looks up a localized string similar to E:\\ARCHIVOS INDEXING\\noencontrada.png.
         /// </summary>
         internal static string ImagenNoEncontrada {
             get {
@@ -143,7 +143,7 @@ namespace BusquedaLaGaceta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O:\\db_lucene\\.
+        ///   Looks up a localized string similar to E:\\db_lucene\\.
         /// </summary>
         internal static string IndexPath {
             get {

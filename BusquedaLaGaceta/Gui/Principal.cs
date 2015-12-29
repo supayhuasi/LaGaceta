@@ -79,9 +79,9 @@ namespace BusquedaLaGaceta
             }
             List<SearchResult> resultados;
             if (!chkDiario.Checked)
-                resultados = luceneService.Search(txtBuscar.Text, fechaDesde, fechaHasta, true);
+                resultados = luceneService.Search(txtBuscar.Text.ToLower(), fechaDesde.Date, fechaHasta.Date, true);
             else
-                resultados = luceneService.Search(txtBuscar.Text, fechaDesde, fechaDesde, true);
+                resultados = luceneService.Search(txtBuscar.Text.ToLower(), fechaDesde, fechaDesde, true);
             lbResultado = resultados.Count.ToString();
             lresultado.Invoke(new UpdateUI(updatelresultado));
             var listResultados = resultados.OrderBy(x=>x.Path);

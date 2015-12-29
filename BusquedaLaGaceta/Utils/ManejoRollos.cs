@@ -20,23 +20,7 @@ namespace BusquedaLaGaceta.Utils
             var resultado =
                 db.Table_LuceneDBIndexAddress.Where(x => x.Date_From <= fechaDesde && x.Date_To >= fechaHasta);
             return resultado;            
-        }
-        public bool InsertarFileName(string filename, string rename, string directorio)
-        {
-            try { 
-            var dbFileNames = new Table_File_Names();
-            dbFileNames.Directory = directorio;
-            dbFileNames.File_Name = filename;
-            dbFileNames.File_Rename = rename;
-            db.Table_File_Names.Add(dbFileNames);
-            db.SaveChanges();
-            return true;
-                }
-            catch(Exception ex)
-            {
-                return false;
-            }
-        }
+        }        
         public string FilePath(string fileName)
         {
             //var nombreArchivo = fileName.IndexOf(".txt");
@@ -66,6 +50,22 @@ namespace BusquedaLaGaceta.Utils
             var resultado =
                 db.Table_File_Names.Where(x => x.File_Rename.Contains(fileName)).FirstOrDefault();
             return resultado.Directory.Replace("O:\\", Properties.Resources.DiscoImagenes).TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+        }
+        public bool InsertFileNames(string directorio, string fileName, string fileRename)
+        {
+            try { 
+            var file_names= new Table_File_Names();
+            file_names.Directory= directorio;
+            file_names.File_Name= fileName;
+            file_names.File_Rename= fileRename;
+            db.Table_File_Names.Add(file_names);
+            db.SaveChanges();
+            return true;
+                }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
