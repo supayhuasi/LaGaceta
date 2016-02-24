@@ -25,12 +25,25 @@ namespace BusquedaLaGaceta.Utils
         {
             //var nombreArchivo = fileName.IndexOf(".txt");
             //fileName = fileName.Remove(0, nombreArchivo);
-            var resultado =
-                db.Table_File_Names.Where(x => x.File_Name.Contains(fileName)).FirstOrDefault();
-            if (resultado != null)
-                return resultado.Directory.Replace("O:\\", Properties.Resources.DiscoImagenes).TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+            if (fileName.Contains(".JPG"))
+            {
+                var resultado =
+                   db.Table_File_Names.Where(x => x.File_Name.Contains(fileName)).FirstOrDefault();
+                if (resultado != null)
+                    return resultado.Directory.Replace("O:\\", Properties.Resources.DiscoImagenes).TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+                else
+                    return "imagen vacia";
+            }
             else
-                return "imagen vacia";
+            {
+                var resultado =
+                db.Table_File_Names.Where(x => x.File_Name.Contains(fileName + ".JPG")).FirstOrDefault();
+                if (resultado != null)
+                    return resultado.Directory.Replace("O:\\", Properties.Resources.DiscoImagenes).TrimEnd() + "\\" + resultado.File_Rename.TrimEnd();
+                else
+                    return "imagen vacia";
+            }
+
         }
         public string nombreArchivoPagina(string fileName)
         {

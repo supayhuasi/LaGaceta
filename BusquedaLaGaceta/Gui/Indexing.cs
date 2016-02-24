@@ -54,6 +54,7 @@ namespace BusquedaLaGaceta.Gui
                 MessageBox.Show("La cantidad de archivos son diferentes");
             }
             luceneService.BuildIndex(lista,txtDirLucene.Text);
+            MessageBox.Show("Se completo con exito la indexacion");
         }
 
         private void button4_Click(object sender, EventArgs e)

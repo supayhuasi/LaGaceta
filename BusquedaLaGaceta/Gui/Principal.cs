@@ -64,7 +64,8 @@ namespace BusquedaLaGaceta
             
         }
         private void SearchThread()
-        {            
+        {
+            try { 
             treeView1.Invoke(new UpdateUI(limpiezaTree));
             int i = 0;
             string aux="";
@@ -115,6 +116,11 @@ namespace BusquedaLaGaceta
             }
             btnBuscar.Invoke(new UpdateUI(habiliarBuscar));
             btnPantalla.Invoke(new UpdateUI(habilitarBotonesImagenes));
+                }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         public void habiliarBuscar()
         {

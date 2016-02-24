@@ -70,8 +70,7 @@ namespace SimpleLuceneSearch
 
 		public List<SearchResult> Search(string searchTerm, DateTime fechaDesde, DateTime fechaHasta, bool bDiario)
 		{
-		   
-			
+            
 			ManagerDirectory mg = new ManagerDirectory();
 		List<SearchResult> result =  new List<SearchResult>();
 		var paths = rollos.DbPath(fechaDesde, fechaHasta);
@@ -82,9 +81,9 @@ namespace SimpleLuceneSearch
 				var indexPath = pathAplicacion + path.DB_Path.Replace("E:\\db_lucene\\", "");
 				
 				
-		luceneIndexDirectory = FSDirectory.Open(indexPath);
+		        luceneIndexDirectory = FSDirectory.Open(indexPath);
 
-		Searcher searcher = new IndexSearcher(luceneIndexDirectory);
+		        Searcher searcher = new IndexSearcher(luceneIndexDirectory);
 		//Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_24);
 				//SpanishStemFilter
 		//QueryParser queryParser = new QueryParser(DocumentFunctions.CONTENT, new StandardAnalyzer());
@@ -111,6 +110,8 @@ namespace SimpleLuceneSearch
 			}
 			}
 			return result;
+                
+
 		}
 	}
 }
